@@ -1,0 +1,46 @@
+.NavBar-container {
+  position: fixed;
+  left: auto;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 100;
+  width: 60px;
+  padding: var(--l) 0 var(--l);
+  background-color: var(--primary);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.NavBar-title {
+  color: var(--white);
+  font-size: 12px;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+
+.NavBar-linkContainer {
+}
+
+.NavBar-link,
+.NavBar-link:visited {
+  color: var(--black);
+  opacity: 1;
+  text-decoration: none;
+  margin: 10px;
+  text-align: center;
+}
+
+.NavBar-link:hover {
+  opacity: 0.4;
+}
+
+.font {
+  font-size: var(--l);
+}
+
+#icon {
+  width: 30px;
+  padding-bottom: 5px;
+}

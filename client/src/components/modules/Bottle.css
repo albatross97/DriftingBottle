@@ -7,3 +7,10 @@
   padding: 5px 10px;
   width: fit-content;
 }
+.bottle-icon {
+  width: 40px;
+  cursor: pointer;
+}
+.bottle {
+  padding: 0 10px;
+}

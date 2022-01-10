@@ -94,7 +94,3 @@ form {
 .u-link:hover {
   color: var(--primary--dim);
 }
-
-#bottle {
-  width: 15%;
-}

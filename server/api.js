@@ -17,6 +17,7 @@ const data = {
       creator_name: "Rui Wang",
       content: "I love corgis!",
       tag: "1900s",
+      title: "corgis",
     },
     {
       _id: 1,
@@ -24,6 +25,7 @@ const data = {
       creator_name: "Rui Wang",
       content: "noooo!",
       tag: "1800s",
+      title: "no",
     },
     {
       _id: 2,
@@ -31,6 +33,7 @@ const data = {
       creator_name: "Joes White",
       content: "cats!",
       tag: "1600s",
+      title: "cat",
     },
   ],
   comments: [

@@ -31,6 +31,7 @@ const Profile = () => {
         key={`Bottle_${storyObj._id}`}
         _id={storyObj._id}
         creator_name={storyObj.creator_name}
+        title={storyObj.title}
         content={storyObj.content}
         tag={storyObj.tag}
       />
@@ -47,6 +48,7 @@ const Profile = () => {
         key={`Bottle_${commentsObjs._id}`}
         _id={commentsObjs._id}
         creator_name={commentsObjs.creator_name}
+        title={commentsObjs.title}
         content={commentsObjs.content}
         tag={commentsObjs.tag}
       />
@@ -56,16 +58,18 @@ const Profile = () => {
   }
 
   return (
-    <section className="Profile-container">
-      <div className="Profile-avatarContainer">
+    <section className="Profile-container ">
+      <div className="Profile-avatarContainer ">
         <div className="Profile-avatar " />
       </div>
       <div className="Profile-name u-textCenter">Rui Wang</div>
       <div className="Profile-info u-textCenter">
-        Drop {storiesList.length} bottle | Pick up {commentList.length} bottles
+        <span>Drop {storiesList.length} bottle</span>
+        <span> | </span>
+        <span>Pick up {commentList.length} bottles</span>
       </div>
       <div className="u-flex">
-        <div className="Profile-subContainer u-textRight middle">{storiesList}</div>
+        <div className="Profile-subContainer middle">{storiesList}</div>
         <div className="Profile-subContainer">{commentList}</div>
       </div>
     </section>

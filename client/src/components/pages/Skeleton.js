@@ -9,7 +9,7 @@ const GOOGLE_CLIENT_ID = "121479668229-t5j82jrbi9oejh7c8avada226s75bopn.apps.goo
 
 const Skeleton = ({ userId, handleLogin, handleLogout }) => {
   return (
-    <>
+    <div className="Login-container">
       {userId ? (
         <GoogleLogout
           clientId={GOOGLE_CLIENT_ID}
@@ -25,7 +25,7 @@ const Skeleton = ({ userId, handleLogin, handleLogout }) => {
           onFailure={(err) => console.log(err)}
         />
       )}
-      <h1>Good luck on your project :)</h1>
+      {/* <h1>Good luck on your project :)</h1>
       <h2> What you need to change in this skeleton</h2>
       <ul>
         <li>
@@ -40,8 +40,8 @@ const Skeleton = ({ userId, handleLogin, handleLogout }) => {
         <li>Change the Database Name for MongoDB to whatever you put in the SRV (server.js)</li>
       </ul>
       <h2>How to go from this skeleton to our actual app</h2>
-      <a href="http://weblab.to/get-started">Check out this getting started guide</a>
-    </>
+      <a href="http://weblab.to/get-started">Check out this getting started guide</a> */}
+    </div>
   );
 };
 

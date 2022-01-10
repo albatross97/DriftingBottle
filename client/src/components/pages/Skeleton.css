@@ -1,1 +1,7 @@
 /* Fill me in :) */
+.Login-container {
+  background: url("../modules/login.png") no-repeat center center/cover;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}

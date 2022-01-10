@@ -4,6 +4,7 @@ import NavBar from "./modules/NavBar.js";
 import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
 import Profile from "./pages/Profile.js";
+import Home from "./pages/Home.js";
 
 import "../utilities.css";
 
@@ -42,10 +43,12 @@ const App = () => {
 
   return (
     <>
+      {/* {userId ? <NavBar /> : <></>} */}
       <NavBar />
       <Router>
         <Skeleton path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
         <Profile path="/profile/" />
+        <Home path="/home" />
         <NotFound default />
       </Router>
     </>

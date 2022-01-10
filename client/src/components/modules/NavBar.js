@@ -16,13 +16,13 @@ const NavBar = () => {
         <div>Drifting Bottle</div>
       </div>
       <div className="NavBar-linkContainer u-flexColumn">
-        <Link to="/home/" className="NavBar-link">
+        <Link to="/" className="NavBar-link">
           <FontAwesomeIcon icon={faPlusCircle} className="font" />
         </Link>
         <Link to="/profile/" className="NavBar-link">
           <FontAwesomeIcon icon={faUser} className="font" />
         </Link>
-        <Link to="/" className="NavBar-link">
+        <Link to="/home/" className="NavBar-link">
           <FontAwesomeIcon icon={faHome} className="font" />
         </Link>
       </div>

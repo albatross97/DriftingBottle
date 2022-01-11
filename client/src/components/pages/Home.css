@@ -4,3 +4,12 @@
   width: 100vw;
   height: 100vh;
 }
+.Home-btns {
+  position: absolute;
+  left: var(--l);
+  bottom: var(--l);
+  cursor: pointer;
+}
+.Home-btns .font {
+  margin-right: 10px;
+}

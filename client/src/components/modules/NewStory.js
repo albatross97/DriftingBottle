@@ -70,7 +70,7 @@ const NewStory = (props) => {
   const addStory = (title, value) => {
     const body = { content: value, title: title, tag: "test" };
     post("/api/story", body).then((story) => {
-      props.addNewStory(story);
+      // props.addNewStory(story);
     });
     props.handleClose();
   };

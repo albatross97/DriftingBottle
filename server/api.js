@@ -151,6 +151,11 @@ router.post("/comments", (req, res) => {
   res.send(newComment);
 });
 
+router.get("/stories", (req, res) => {
+  const stories = data.stories;
+  res.send(stories);
+});
+
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {
   console.log(`API route not found: ${req.method} ${req.url}`);

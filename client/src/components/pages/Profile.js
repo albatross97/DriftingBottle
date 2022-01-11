@@ -7,54 +7,56 @@ import React, { useState, useEffect } from "react";
 
 const Profile = () => {
   //filtered stories that the user created
-  const [stories, setStories] = useState([]);
+  const [drops, setDrops] = useState([]);
   //filtered stories that the user made comments
-  const [comments, setComments] = useState([]);
+  const [pickups, setPickups] = useState([]);
 
   useEffect(() => {
     document.title = "Profile Page";
-    get("/api/stories").then((storyObjs) => {
-      let reversedStoryObjs = storyObjs.reverse();
-      setStories(reversedStoryObjs);
+    get("/api/drops").then((dropObjs) => {
+      let reversedDropObjs = dropObjs.reverse();
+      setDrops(reversedDropObjs);
     });
-    get("/api/comments").then((commentsObjs) => {
-      let reversedCommentObjs = commentsObjs.reverse();
-      setComments(reversedCommentObjs);
+    get("/api/pickups").then((pickupObjs) => {
+      let reversedPickupObjs = pickupObjs.reverse();
+      setPickups(reversedPickupObjs);
     });
   }, []);
 
-  let storiesList = null;
-  const hasStories = stories.length !== 0;
-  if (hasStories) {
-    storiesList = stories.map((storyObj) => (
+  let dropList = null;
+  const hasDrops = drops.length !== 0;
+  if (hasDrops) {
+    dropList = drops.map((dropObj) => (
       <Bottle
-        key={`Bottle_${storyObj._id}`}
-        _id={storyObj._id}
-        creator_name={storyObj.creator_name}
-        title={storyObj.title}
-        content={storyObj.content}
-        tag={storyObj.tag}
+        key={`Bottle_${dropObj._id}`}
+        _id={dropObj._id}
+        creator_name={dropObj.creator_name}
+        creator_id={dropObj.creator_id}
+        title={dropObj.title}
+        content={dropObj.content}
+        tag={dropObj.tag}
       />
     ));
   } else {
-    storiesList = <div>No bottles!</div>;
+    dropList = <div>No bottles!</div>;
   }
 
-  let commentList = null;
-  const hasComments = comments.length !== 0;
-  if (hasComments) {
-    commentList = comments.map((commentsObjs) => (
+  let pickupList = null;
+  const hasPickups = pickups.length !== 0;
+  if (hasPickups) {
+    pickupList = pickups.map((pickupObjs) => (
       <Bottle
-        key={`Bottle_${commentsObjs._id}`}
-        _id={commentsObjs._id}
-        creator_name={commentsObjs.creator_name}
-        title={commentsObjs.title}
-        content={commentsObjs.content}
-        tag={commentsObjs.tag}
+        key={`Bottle_${pickupObjs._id}`}
+        _id={pickupObjs._id}
+        creator_name={pickupObjs.creator_name}
+        creator_id={pickupObjs.creator_id}
+        title={pickupObjs.title}
+        tag={pickupObjs.tag}
+        content={pickupObjs.content}
       />
     ));
   } else {
-    commentList = <div>No bottles!</div>;
+    pickupList = <div>No bottles!</div>;
   }
 
   return (
@@ -64,13 +66,13 @@ const Profile = () => {
       </div>
       <div className="Profile-name u-textCenter">Rui Wang</div>
       <div className="Profile-info u-textCenter">
-        <span>Drop {storiesList.length} bottle</span>
+        <span>Drop {dropList.length} bottle</span>
         <span> | </span>
-        <span>Pick up {commentList.length} bottles</span>
+        <span>Pick up {pickupList.length} bottles</span>
       </div>
       <div className="u-flex">
-        <div className="Profile-subContainer middle">{storiesList}</div>
-        <div className="Profile-subContainer">{commentList}</div>
+        <div className="Profile-subContainer middle">{dropList}</div>
+        <div className="Profile-subContainer">{pickupList}</div>
       </div>
     </section>
   );

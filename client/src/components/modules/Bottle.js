@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../../utilities.css";
 import "./Bottle.css";
-import Parchment from "./Parchment.js";
+import { ViewParchment } from "./Parchment.js";
 
 const Bottle = (props) => {
   const [seen, setSeen] = useState(false);
@@ -27,9 +27,17 @@ const Bottle = (props) => {
         </g>
       </svg>
       <div className="Bottle-tag">{props.tag}</div>
-      <div>{props.creator_name}:</div>
       <div>{props.title}</div>
-      {seen && <Parchment handleClose={togglePop} content={props.content} />}
+      {seen && (
+        <ViewParchment
+          handleClose={togglePop}
+          title={props.title}
+          content={props.content}
+          _id={props._id}
+          creator_name={props.creator_name}
+          creator_id={props.creator_id}
+        />
+      )}
     </div>
   );
 };

@@ -6,7 +6,7 @@
 | This file defines the routes for your server.
 |
 */
-const MY_NAME = "Hackerman";
+const MY_NAME = "Rui Wang";
 const MY_ID = 7;
 
 const data = {
@@ -23,7 +23,7 @@ const data = {
       _id: 1,
       creator_id: 7,
       creator_name: "Rui Wang",
-      content: "noooo!",
+      content: "noooo! I forget my pasword",
       tag: "1800s",
       title: "no",
     },
@@ -31,7 +31,7 @@ const data = {
       _id: 2,
       creator_id: 0,
       creator_name: "Joes White",
-      content: "cats!",
+      content: "cats! I prefer cats than dogs!",
       tag: "1600s",
       title: "cat",
     },
@@ -103,12 +103,12 @@ router.post("/initsocket", (req, res) => {
 // |------------------------------|
 // | write your API methods below!|
 // |------------------------------|
-router.get("/stories", (req, res) => {
+router.get("/drops", (req, res) => {
   const filteredStories = data.stories.filter((story) => story.creator_id == MY_ID);
   res.send(filteredStories);
 });
 
-router.get("/comments", (req, res) => {
+router.get("/pickups", (req, res) => {
   const filteredComments = data.comments.filter((comment) => comment.creator_id == MY_ID);
   const filteredParents = filteredComments.map((comment) => comment.parent);
   const uniqueParents = filteredParents.filter((p, index) => filteredParents.indexOf(p) == index);
@@ -118,6 +118,39 @@ router.get("/comments", (req, res) => {
 
   res.send(filteredStories);
 });
+
+router.post("/story", (req, res) => {
+  const newStory = {
+    _id: data.stories.length,
+    creator_id: MY_ID,
+    creator_name: MY_NAME,
+    tag: req.body.tag,
+    title: req.body.title,
+    content: req.body.content,
+  };
+
+  data.stories.push(newStory);
+  res.send(newStory);
+});
+
+router.get("/comments", (req, res) => {
+  const filteredComments = data.comments.filter((comment) => comment.parent == req.query.parent);
+  res.send(filteredComments);
+});
+
+router.post("/comments", (req, res) => {
+  const newComment = {
+    _id: data.comments.length,
+    creator_id: MY_ID,
+    creator_name: MY_NAME,
+    parent: req.body.parent,
+    content: req.body.content,
+  };
+
+  data.comments.push(newComment);
+  res.send(newComment);
+});
+
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {
   console.log(`API route not found: ${req.method} ${req.url}`);

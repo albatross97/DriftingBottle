@@ -94,3 +94,7 @@ form {
 .u-link:hover {
   color: var(--primary--dim);
 }
+
+.u-name {
+  color: var(--primary);
+}

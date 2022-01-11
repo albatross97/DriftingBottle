@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./Parchment.css";
 import SingleStory from "./SingleStory.js";
-import { NewComment, NewStory } from "./NewPostInput.js";
+import { NewComment } from "./NewComment.js";
+import { NewStory } from "./NewStory.js";
 import { get } from "../../utilities";
 
 // NavBar drop new bottles
@@ -12,7 +13,7 @@ const NewParchment = (props) => {
         <span className="close-icon" onClick={props.handleClose}>
           x
         </span>
-        <NewStory />
+        <NewStory handleClose={props.handleClose} />
       </div>
     </div>
   );

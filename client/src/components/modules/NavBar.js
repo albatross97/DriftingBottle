@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faUser, faPlusCircle, faRegistered } from "@fortawesome/free-solid-svg-icons";
 
-import { NewParchment } from "../modules/Parchment.js";
+import { NewParchment } from "./Parchment.js";
 
 import { Link } from "@reach/router";
 import icon from "./icon.png";

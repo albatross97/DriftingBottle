@@ -46,15 +46,4 @@ const NewComment = (props) => {
   return <NewPostInput defaultText="New Comment" onSubmit={addComment} />;
 };
 
-const NewStory = (props) => {
-  const addStory = (value) => {
-    const body = { content: value };
-    post("/api/story", body).then((story) => {
-      props.addNewStory(story);
-    });
-  };
-
-  return <NewPostInput defaultText="New Story" onSubmit={addStory} />;
-};
-
-export { NewComment, NewStory };
+export { NewComment };

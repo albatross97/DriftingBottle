@@ -14,3 +14,8 @@
 .bottle {
   padding: 0 10px;
 }
+
+.Home-bottle-icon {
+  width: 100px;
+  cursor: pointer;
+}

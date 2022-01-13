@@ -3,9 +3,16 @@ import HomeBottle from "./HomeBottle";
 import { get } from "../../utilities";
 
 const RandomBottles = (props) => {
-  const [randoms, setRandoms] = useState([]);
+  const [stories, setStories] = useState([]);
+  
+  useEffect(() => {
+    get("/api/stories").then((storiesObjs) => {
+      setStories(storiesObjs);
+    });
+  }, []);
 
   const sample = (srcArr, n) => {
+    srcArr = srcArr.slice();
     let resultArr = [];
     while (srcArr.length && resultArr.length < n) {
       resultArr = resultArr.concat(
@@ -19,12 +26,7 @@ const RandomBottles = (props) => {
     return resultArr;
   };
 
-  useEffect(() => {
-    get("/api/stories").then((storiesObjs) => {
-      const newRandoms = sample(storiesObjs, props.size);
-      setRandoms(newRandoms);
-    });
-  }, []);
+  let randoms = sample(stories, props.size);
 
   const getRandomNumber = (min, max) => {
     min = Math.ceil(min);
@@ -38,8 +40,8 @@ const RandomBottles = (props) => {
     let winHeight = window.innerHeight;
     let margin = 100;
     let randomTop = getRandomNumber(winHeight / 2, winHeight - margin);
-    let randomLeft = getRandomNumber(margin, winWidth - margin);
-    console.log(randomLeft, randomTop);
+    let randomLeft = getRandomNumber(margin, winWidth - margin - 60);
+
     const objStyle = {
       position: "absolute",
       top: randomTop + "px",

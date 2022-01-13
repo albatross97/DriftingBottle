@@ -1,0 +1,20 @@
+.NewPostInput-container {
+    margin-top: var(-l);
+}
+
+.NewPostInput-input{
+    border: none;
+    border-bottom: 2px solid var(--primary);
+    width: 50%
+}
+.NewPostInput-input:focus{
+    outline: none;
+}
+
+.NewPostInput-button{
+    color: var(--primary)
+}
+
+.NewPostInput-input::placeholder{
+    font-style: italic;
+}

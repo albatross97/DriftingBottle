@@ -41,4 +41,7 @@
 
 .story-title {
   font-size: var(--l);
+  margin-bottom: var(--s);
+  text-transform: capitalize;
+  font-weight: 700;
 }

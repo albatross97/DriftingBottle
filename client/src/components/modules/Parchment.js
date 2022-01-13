@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Parchment.css";
-import SingleStory from "./SingleStory.js";
+import SinglePost from "./SinglePost.js";
 import { NewComment } from "./NewComment.js";
 import { NewStory } from "./NewStory.js";
 import { get } from "../../utilities";
@@ -40,7 +40,7 @@ const ViewParchment = (props) => {
           x
         </span>
         <div className="story-title">{props.title}</div>
-        <SingleStory
+        <SinglePost
           _id={props._id}
           creator_name={props.creator_name}
           creator_id={props.creator_id}
@@ -49,7 +49,7 @@ const ViewParchment = (props) => {
         <div className="story-comments">
           {comments &&
             comments.map((comment) => (
-              <SingleStory
+              <SinglePost
                 key={`SingleComment_${comment._id}`}
                 _id={comment._id}
                 creator_name={comment.creator_name}

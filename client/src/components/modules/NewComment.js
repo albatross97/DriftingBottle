@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { post } from "../../utilities";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import './NewComment.css'
 
 const NewPostInput = (props) => {
   const [value, setValue] = useState("");
@@ -15,7 +18,7 @@ const NewPostInput = (props) => {
   };
 
   return (
-    <div className="u-flex">
+    <div className="NewPostInput-container u-flex">
       <input
         type="text"
         placeholder={props.defaultText}
@@ -23,14 +26,7 @@ const NewPostInput = (props) => {
         onChange={handleChange}
         className="NewPostInput-input"
       />
-      <button
-        type="submit"
-        className="NewPostInput-button u-pointer"
-        value="Submit"
-        onClick={handleSubmit}
-      >
-        Submit
-      </button>
+      <FontAwesomeIcon icon={faPaperPlane} type="submit" className="NewPostInput-button u-pointer font" value="Submit" onClick={handleSubmit} />
     </div>
   );
 };

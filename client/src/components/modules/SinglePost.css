@@ -1,0 +1,8 @@
+.single-name{
+    color: var(--primary);
+    font-size: var(--sm)
+}
+
+.single-story{
+    margin-bottom:var(--s)
+}

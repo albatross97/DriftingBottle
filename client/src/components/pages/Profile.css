@@ -7,39 +7,13 @@
 }
 
 .Profile-avatarContainer {
-  max-width: 250px;
-  padding: 0 30%;
-}
-
-.Profile-avatar {
-  /* make it responsive */
-  max-width: 100%;
-  width: 100%;
-  height: auto;
-  display: block;
-  /* div height to be the same as width*/
-  padding-top: 100%;
-
-  /* make it a circle */
+  width: 250px;
+  height: 250px;
+  margin: auto;
   border-radius: 50%;
-
-  /* Centering on image`s center*/
-  background-position-y: center;
-  background-position-x: center;
-  background-repeat: no-repeat;
-
-  /* it makes the clue thing, takes smaller dimension to fill div */
-  background-size: cover;
-
-  /* it is optional, for making this div centered in parent*/
-  margin: 0 auto;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   background-color: var(--darkgrey);
-  /* background-image: url("../../public/corgi.jpg"); */
 }
+
 
 .Profile-name {
   padding: 2rem 0 0.3rem;
@@ -49,8 +23,8 @@
   font-size: var(--m);
   color: var(--primary);
   margin-bottom: 40px;
-  display:flex;
-  justify-content:center
+  /* display:flex;
+  justify-content:center */
 }
 
 .Profile-line {

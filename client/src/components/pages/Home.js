@@ -30,7 +30,6 @@ const Home = () => {
       top: randomTop + "px",
       left: randomLeft + "px",
     };
-    console.log(randomTop, randomLeft);
     return (
       <button key={index} style={objStyle}>
         hello

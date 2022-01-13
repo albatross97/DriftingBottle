@@ -7,21 +7,27 @@ import "./NewStory.css";
 
 const NewPostInput = (props) => {
   const [title, setTitle] = useState("");
-  const [value, setValue] = useState("");
+  const [content, setContent] = useState("");
+  const [tag, setTag] = useState("");
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
   };
 
   const handleContentChange = (event) => {
-    setValue(event.target.value);
+    setContent(event.target.value);
+  };
+
+  const handleTagChange = (event) => {
+    setTag(event.target.value);
   };
 
   const handleSubmit = (event) => {
-    // event.preventDefault();
-    props.onSubmit && props.onSubmit(title, value);
+    event.preventDefault();
+    props.onSubmit && props.onSubmit(title, content, tag);
     setTitle("");
-    setValue("");
+    setContent("");
+    setTag("");
   };
 
   return (
@@ -42,24 +48,28 @@ const NewPostInput = (props) => {
         <textarea
           type="text"
           placeholder="content"
-          value={value}
+          value={content}
           onChange={handleContentChange}
           className="NewStory-content"
           required
         />
       </div>
-      <div className="NewStory-container">
+      <div className="NewStory-container" onChange={handleTagChange}>
         <label>
-          <input type="radio" value="male" required />
+          <input type="radio" value="1700s" name="tag" required />
           1700s
         </label>
         <label>
-          <input type="radio" value="female" />
+          <input type="radio" value="1800s" name="tag" />
           1800s
         </label>
         <label>
-          <input type="radio" value="other" />
+          <input type="radio" value="1900s" name="tag" />
           1900s
+        </label>
+        <label>
+          <input type="radio" value="2000s" name="tag" />
+          2000s
         </label>
       </div>
       <div className="NewStory-container u-textRight">
@@ -67,9 +77,8 @@ const NewPostInput = (props) => {
           type="submit"
           className="NewStory-button"
           value="Submit"
-          onClick={title != "" && value != "" ? handleSubmit : null}
+          onClick={title != "" && content != "" && tag != "" ? handleSubmit : null}
         >
-          {/* Submit */}
           <FontAwesomeIcon icon={faPaperPlane} className="font u-pointer" />
         </button>
       </div>
@@ -78,12 +87,12 @@ const NewPostInput = (props) => {
 };
 
 const NewStory = (props) => {
-  const addStory = (title, value) => {
-    const body = { content: value, title: title, tag: "test" };
+  const addStory = (title, content, tag) => {
+    const body = { content: content, title: title, tag: tag };
     post("/api/story", body).then((story) => {
       // props.addNewStory(story);
+      // props.handleClose();
     });
-    props.handleClose();
   };
 
   return <NewPostInput defaultText="New Story" onSubmit={addStory} />;

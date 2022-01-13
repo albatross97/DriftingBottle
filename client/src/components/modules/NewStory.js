@@ -32,8 +32,8 @@ const NewPostInput = (props) => {
 
   return (
     <form className="u-flexColumn">
-      <div className="NewStory-container">
-        <label> Title</label>
+      <div className="NewStory-container u-flexColumn">
+        <label>Title</label>
         <input
           type="text"
           placeholder="title"

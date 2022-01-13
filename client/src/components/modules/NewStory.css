@@ -1,14 +1,21 @@
 .NewStory-container {
   margin-top: var(--sm);
 }
+.NewStory-container label {
+  margin-bottom: var(--s);
+  color: var(--dark-blue);
+}
 
 .NewStory-title,
 .NewStory-content {
   border: none;
   border-bottom: 2px solid var(--primary);
   font-family: inherit;
-  display: block;
   max-width: 100%;
+}
+
+.NewStory-content {
+  height: 80px;
 }
 
 .NewStory-button {

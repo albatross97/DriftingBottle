@@ -1,0 +1,35 @@
+.NewStory-container {
+  margin-top: var(--sm);
+}
+
+.NewStory-title,
+.NewStory-content {
+  border: none;
+  border-bottom: 2px solid var(--primary);
+  font-family: inherit;
+  display: block;
+  max-width: 100%;
+}
+
+.NewStory-button {
+  color: var(--primary);
+  outline: none;
+  border: none;
+  background: none;
+}
+.NewStory-button:hover {
+  opacity: 0.5;
+}
+.NewStory-button:active {
+  transform: scale(0.9);
+}
+
+.NewStory-title:focus,
+.NewStory-content:focus {
+  outline: none;
+}
+
+.NewStory-title::placeholder,
+.NewStory-content::placeholder {
+  font-style: italic;
+}

@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { post } from "../../utilities";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import "./NewStory.css";
+
 const NewPostInput = (props) => {
   const [title, setTitle] = useState("");
   const [value, setValue] = useState("");
@@ -21,26 +25,30 @@ const NewPostInput = (props) => {
   };
 
   return (
-    <form className="u-flex">
-      <label> Title</label>
-      <input
-        type="text"
-        placeholder="title"
-        value={title}
-        onChange={handleTitleChange}
-        className="NewPostInput-title"
-        required
-      />
-      <label> Content</label>
-      <input
-        type="text"
-        placeholder="content"
-        value={value}
-        onChange={handleContentChange}
-        className="NewPostInput-content"
-        required
-      />
-      <div>
+    <form className="u-flexColumn">
+      <div className="NewStory-container">
+        <label> Title</label>
+        <input
+          type="text"
+          placeholder="title"
+          value={title}
+          onChange={handleTitleChange}
+          className="NewStory-title"
+          required
+        />
+      </div>
+      <div className="NewStory-container u-flexColumn">
+        <label> Content</label>
+        <textarea
+          type="text"
+          placeholder="content"
+          value={value}
+          onChange={handleContentChange}
+          className="NewStory-content"
+          required
+        />
+      </div>
+      <div className="NewStory-container">
         <label>
           <input type="radio" value="male" required />
           1700s
@@ -54,14 +62,17 @@ const NewPostInput = (props) => {
           1900s
         </label>
       </div>
-      <button
-        type="submit"
-        className="NewPostInput-button u-pointer"
-        value="Submit"
-        onClick={(title != "" && value != "") ? handleSubmit : null}
-      >
-        Submit
-      </button>
+      <div className="NewStory-container u-textRight">
+        <button
+          type="submit"
+          className="NewStory-button"
+          value="Submit"
+          onClick={title != "" && value != "" ? handleSubmit : null}
+        >
+          {/* Submit */}
+          <FontAwesomeIcon icon={faPaperPlane} className="font u-pointer" />
+        </button>
+      </div>
     </form>
   );
 };

@@ -1,20 +1,26 @@
 .NewPostInput-container {
-    margin-top: var(-l);
+  margin-top: var(-l);
 }
 
-.NewPostInput-input{
-    border: none;
-    border-bottom: 2px solid var(--primary);
-    width: 50%
+.NewPostInput-input {
+  border: none;
+  border-bottom: 2px solid var(--primary);
+  width: 50%;
 }
-.NewPostInput-input:focus{
-    outline: none;
-}
-
-.NewPostInput-button{
-    color: var(--primary)
+.NewPostInput-input:focus {
+  outline: none;
 }
 
-.NewPostInput-input::placeholder{
-    font-style: italic;
+.NewPostInput-button {
+  color: var(--primary);
+}
+
+.NewPostInput-button:hover {
+  opacity: 0.5;
+}
+.NewPostInput-button:active {
+  transform: scale(0.9);
+}
+.NewPostInput-input::placeholder {
+  font-style: italic;
 }

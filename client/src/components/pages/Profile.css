@@ -49,6 +49,8 @@
   font-size: var(--m);
   color: var(--primary);
   margin-bottom: 40px;
+  display:flex;
+  justify-content:center
 }
 
 .Profile-line {

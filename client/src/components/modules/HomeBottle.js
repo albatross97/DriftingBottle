@@ -16,7 +16,11 @@ const HomeBottle = (props) => {
   const randombt = bts[Math.floor(Math.random() * bts.length)];
 
   return (
-    <div className="u-flexColumn u-flex-alignCenter bottle">
+    <div style={{position:"absolute",
+
+    top:`${props.style.top}`,
+    left:`${props.style.left}`,}} className="u-flexColumn u-flex-alignCenter bottle">
+    {/*  */}
       {!seen && <img src={randombt} className="Home-bottle-icon" onClick={togglePop} />}
       {!seen && <div className="Bottle-tag">{props.tag}</div>}
       {seen && (

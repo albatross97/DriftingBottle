@@ -30,6 +30,7 @@ const RandomBottles = (props) => {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min);
+
   };
 
   const randomStyle = () => {
@@ -38,6 +39,7 @@ const RandomBottles = (props) => {
     let margin = 100;
     let randomTop = getRandomNumber(winHeight / 2, winHeight - margin);
     let randomLeft = getRandomNumber(margin, winWidth - margin);
+    console.log(randomLeft, randomTop);
     const objStyle = {
       position: "absolute",
       top: randomTop + "px",
@@ -48,6 +50,7 @@ const RandomBottles = (props) => {
 
   let randomList = null;
   const hasRandom = randoms.length !== 0;
+
   if (hasRandom) {
     randomList = randoms.map((randomObj) => (
       <HomeBottle
@@ -58,7 +61,7 @@ const RandomBottles = (props) => {
         title={randomObj.title}
         content={randomObj.content}
         tag={randomObj.tag}
-        style={randomStyle()}
+        style = {randomStyle()}
       />
     ));
   } else {

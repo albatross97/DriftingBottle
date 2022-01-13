@@ -65,7 +65,7 @@ const Profile = () => {
         <div className="Profile-avatar " />
       </div>
       <div className="Profile-name u-textCenter">Rui Wang</div>
-      <div className="Profile-info u-textCenter">
+      <div className="Profile-info">
         <span>Drop {dropList.length} bottle</span>
         <span> | </span>
         <span>Pick up {pickupList.length} bottles</span>

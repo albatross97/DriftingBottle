@@ -58,7 +58,7 @@ const NewPostInput = (props) => {
         type="submit"
         className="NewPostInput-button u-pointer"
         value="Submit"
-        onClick={handleSubmit}
+        onClick={(title != "" && value != "") ? handleSubmit : null}
       >
         Submit
       </button>

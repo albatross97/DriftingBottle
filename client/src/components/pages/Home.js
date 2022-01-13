@@ -8,7 +8,7 @@ import RandomBottles from "../modules/RandomBottles.js";
 
 const Home = () => {
   const [seen, setSeen] = useState(false);
-
+  const [bottles, setBottles] = useState([]);
   const togglePop = () => {
     setSeen(!seen);
   };
@@ -30,6 +30,7 @@ const Home = () => {
       top: randomTop + "px",
       left: randomLeft + "px",
     };
+    console.log(randomTop, randomLeft);
     return (
       <button key={index} style={objStyle}>
         hello
@@ -37,14 +38,14 @@ const Home = () => {
     );
   };
 
-  let bottles = [];
   const shuffle = () => {
-    bottles.splice(0, bottles.length);
+    let bottles_copy = bottles.map((x) => x);
+    bottles_copy.splice(0, bottles.length);
     [1, 2, 3].forEach((index) => {
-      bottles.push(randomObj(index));
+      bottles_copy.push(randomObj(index));
     });
+    setBottles(bottles_copy);
   };
-  shuffle(bottles);
 
   return (
     <div className="Home-container">

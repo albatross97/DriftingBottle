@@ -21,7 +21,7 @@ const Home = () => {
     return Math.floor(Math.random() * (max - min + 1) + min);
   };
   const shuffle = () => {
-    let size = getRandomNumber(2,3);
+    let size = getRandomNumber(2, 3);
     setSize(size);
     setFlag(!flag);
   };
@@ -29,7 +29,7 @@ const Home = () => {
   return (
     <div className="Home-container">
       <div className="NavBar-add">{seen && <NewParchment handleClose={togglePop} />}</div>
-      <RandomBottles size={size} rerender={flag}/>
+      <RandomBottles size={size} rerender={flag} />
       <div className="Home-btns">
         <FontAwesomeIcon icon={faPlusCircle} className="font" onClick={togglePop} />
         <FontAwesomeIcon icon={faRandom} className="font" onClick={shuffle} />

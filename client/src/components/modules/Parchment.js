@@ -53,7 +53,10 @@ const ViewParchment = (props) => {
         <span className="close-icon" onClick={props.handleClose}>
           x
         </span>
-        <div className="story-title">{props.title}</div>
+        <div className="story-top">
+          <div className="story-title">{props.title}</div>
+          <div className="Bottle-tag">{props.tag}</div>
+        </div>
         <SinglePost
           _id={props._id}
           creator_name={props.creator_name}

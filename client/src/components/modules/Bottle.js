@@ -34,6 +34,7 @@ const Bottle = (props) => {
           title={props.title}
           content={props.content}
           _id={props._id}
+          tag={props.tag}
           creator_name={props.creator_name}
           creator_id={props.creator_id}
         />

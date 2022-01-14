@@ -16,17 +16,23 @@ const HomeBottle = (props) => {
   const randombt = bts[Math.floor(Math.random() * bts.length)];
 
   return (
-    <div style={{position:"absolute",
+    <div
+      style={{
+        position: "absolute",
 
-    top:`${props.style.top}`,
-    left:`${props.style.left}`,}} className="u-flexColumn u-flex-alignCenter bottle">
-    {/*  */}
+        top: `${props.style.top}`,
+        left: `${props.style.left}`,
+      }}
+      className="u-flexColumn u-flex-alignCenter bottle"
+    >
+      {/*  */}
       {!seen && <img src={randombt} className="Home-bottle-icon" onClick={togglePop} />}
       {!seen && <div className="Bottle-tag">{props.tag}</div>}
       {seen && (
         <ViewParchment
           handleClose={togglePop}
           title={props.title}
+          tag={props.tag}
           content={props.content}
           _id={props._id}
           creator_name={props.creator_name}

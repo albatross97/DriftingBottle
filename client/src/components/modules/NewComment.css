@@ -13,6 +13,8 @@
 
 .NewPostInput-button {
   color: var(--primary);
+  font-size: var(--l);
+  cursor: pointer;
 }
 
 .NewPostInput-button:hover {

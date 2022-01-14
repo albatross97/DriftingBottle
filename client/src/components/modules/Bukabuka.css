@@ -1,0 +1,19 @@
+.bukabuka-help {
+  z-index: 20;
+  background-color: white;
+  opacity: 0.8;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  transition: opacity 2s linear;
+}
+
+.bukabuka-container {
+  width: 20vw;
+  max-width: 200px;
+  position: absolute;
+  right: 100px;
+  bottom: 60px;
+  cursor: pointer;
+  z-index: 10;
+}

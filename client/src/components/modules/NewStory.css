@@ -23,6 +23,8 @@
   outline: none;
   border: none;
   background: none;
+  cursor: pointer;
+  font-size: var(--l);
 }
 .NewStory-button:hover {
   opacity: 0.5;

@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 import HomeBottle from "./HomeBottle";
 import { get } from "../../utilities";
+import "./RandomBottles.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRandom } from "@fortawesome/free-solid-svg-icons";
 
 const RandomBottles = (props) => {
   const [stories, setStories] = useState([]);
-  
+  const [size, setSize] = useState(3);
+  const [render, setRender] = useState(false);
+
   useEffect(() => {
     get("/api/stories").then((storiesObjs) => {
       setStories(storiesObjs);
@@ -26,13 +31,12 @@ const RandomBottles = (props) => {
     return resultArr;
   };
 
-  let randoms = sample(stories, props.size);
+  let randoms = sample(stories, size);
 
   const getRandomNumber = (min, max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min);
-
+    return Math.floor(Math.random() * (max - min + 1) + min);
   };
 
   const randomStyle = () => {
@@ -50,6 +54,12 @@ const RandomBottles = (props) => {
     return objStyle;
   };
 
+  const shuffle = () => {
+    let size = getRandomNumber(2, 3);
+    setSize(size);
+    setRender(!render);
+  };
+
   let randomList = null;
   const hasRandom = randoms.length !== 0;
 
@@ -63,14 +73,19 @@ const RandomBottles = (props) => {
         title={randomObj.title}
         content={randomObj.content}
         tag={randomObj.tag}
-        style = {randomStyle()}
+        style={randomStyle()}
       />
     ));
   } else {
     randomList = <div>No bottles!</div>;
   }
 
-  return <div>{randomList}</div>;
+  return (
+    <>
+      <div className="randomList">{randomList}</div>
+      <FontAwesomeIcon icon={faRandom} className="font" onClick={shuffle} />
+    </>
+  );
 };
 
 export default RandomBottles;

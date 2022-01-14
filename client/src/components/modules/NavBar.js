@@ -21,7 +21,7 @@ const NavBar = (props) => {
           <Link to="/" className="NavBar-link">
             <FontAwesomeIcon icon={faRegistered} className="u-icon" />
           </Link>
-          <Link to="/profile/" className="NavBar-link">
+          <Link to={`/profile/${props.userId}`} className="NavBar-link">
             <FontAwesomeIcon icon={faUser} className="u-icon" />
           </Link>
           <Link to="/home/" className="NavBar-link">

@@ -5,11 +5,12 @@ import { get } from "../../utilities";
 
 import React, { useState, useEffect } from "react";
 
-const Profile = () => {
+const Profile = (props) => {
   //filtered stories that the user created
   const [drops, setDrops] = useState([]);
   //filtered stories that the user made comments
   const [pickups, setPickups] = useState([]);
+  const [user, setUser] = useState();
 
   useEffect(() => {
     document.title = "Profile Page";

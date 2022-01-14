@@ -154,18 +154,25 @@ const BukabukaIcon = (props) => (
 );
 
 const Bukabuka = () => {
-  const [seen, setSeen] = useState(false);
-  const toggleText = () => {
-    setSeen(!seen);
+  const helper = [
+    "Hi, I am Bukabuka",
+    "Drop a new bottle by clicking the button on the lower left corner",
+    "You can shuffle bottles as well",
+    "Go to profile page to view bottles you dropped or picked up",
+    "zzZZZ",
+  ];
+
+  const [index, setIndex] = useState(0);
+
+  const shuffleText = () => {
+    let i = index < helper.length - 1 ? (i = index + 1) : 0;
+    setIndex(i);
   };
+
   return (
     <div className="bukabuka-container u-flexColumn">
-      {seen && (
-        <div className="bukabuka-help">
-          Drop a new bottle by clicking the button on the lower left corner
-        </div>
-      )}
-      <BukabukaIcon onClick={toggleText} />
+      <div className="bukabuka-help ">{helper[index]}</div>
+      <BukabukaIcon className="bukabuka" onClick={shuffleText} />
     </div>
   );
 };

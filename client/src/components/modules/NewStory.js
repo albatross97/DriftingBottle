@@ -79,7 +79,7 @@ const NewPostInput = (props) => {
           value="Submit"
           onClick={title != "" && content != "" && tag != "" ? handleSubmit : null}
         >
-          <FontAwesomeIcon icon={faPaperPlane} className="font u-pointer" />
+          <FontAwesomeIcon icon={faPaperPlane} className="font" />
         </button>
       </div>
     </form>

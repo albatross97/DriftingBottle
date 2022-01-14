@@ -1,8 +1,8 @@
-.single-name{
-    color: var(--primary);
-    font-size: var(--sm)
+.single-name {
+  color: var(--primary);
+  font-size: var(--sm);
 }
 
-.single-story{
-    margin-bottom:var(--s)
+.single-story {
+  margin-bottom: var(--m);
 }

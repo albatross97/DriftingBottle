@@ -43,6 +43,7 @@ const Profile = () => {
 
   let pickupList = null;
   const hasPickups = pickups.length !== 0;
+
   if (hasPickups) {
     pickupList = pickups.map((pickupObjs) => (
       <Bottle
@@ -66,9 +67,9 @@ const Profile = () => {
       </div>
       <div className="Profile-name u-textCenter">Ruiiiii Wang</div>
       <div className="Profile-info u-textCenter">
-        <span>Drop {dropList.length} bottle</span>
+        <span>Drop {drops.length} bottle</span>
         <span> | </span>
-        <span>Pick up {pickupList.length} bottles</span>
+        <span>Pick up {pickups.length} bottles</span>
       </div>
       <div className="u-flex">
         <div className="Profile-subContainer middle">{dropList}</div>

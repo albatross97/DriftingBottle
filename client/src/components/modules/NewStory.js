@@ -91,7 +91,7 @@ const NewStory = (props) => {
     const body = { content: content, title: title, tag: tag };
     post("/api/story", body).then((story) => {
       // props.addNewStory(story);
-      // props.handleClose();
+      props.handleClose();
     });
   };
 

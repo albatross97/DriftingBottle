@@ -28,7 +28,7 @@ const Home = () => {
 
   return (
     <div className="Home-container">
-      <div className="NavBar-add">{seen && <NewParchment handleClose={togglePop} />}</div>
+      {seen && <NewParchment handleClose={togglePop} />}
       <RandomBottles size={size} rerender={flag} />
       <div className="Home-btns">
         <FontAwesomeIcon icon={faPlusCircle} className="font" onClick={togglePop} />

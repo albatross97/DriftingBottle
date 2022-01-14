@@ -7,7 +7,7 @@
 |
 */
 const MY_NAME = "Rui Wang";
-const MY_ID = 7;
+const MY_ID = "7";
 
 const data = {
   stories: [
@@ -106,8 +106,12 @@ router.post("/initsocket", (req, res) => {
 // | write your API methods below!|
 // |------------------------------|
 router.get("/drops", (req, res) => {
-  const filteredStories = data.stories.filter((story) => story.creator_id == MY_ID);
-  res.send(filteredStories);
+  // const filteredStories = data.stories.filter((story) => story.creator_id == MY_ID);
+  // res.send(filteredStories);
+
+  Story.find({ creator_name: MY_NAME }).then((stories) => {
+    res.send(stories);
+  });
 });
 
 router.get("/pickups", (req, res) => {
@@ -122,40 +126,50 @@ router.get("/pickups", (req, res) => {
 });
 
 router.post("/story", (req, res) => {
-  const newStory = {
-    _id: data.stories.length,
+  const newStory = new Story({
+    // _id: data.stories.length,
     creator_id: MY_ID,
     creator_name: MY_NAME,
     tag: req.body.tag,
     title: req.body.title,
     content: req.body.content,
-  };
+  });
 
-  data.stories.push(newStory);
-  res.send(newStory);
+  // data.stories.push(newStory);
+  // res.send(newStory);
+
+  newStory.save().then((story) => res.send(story));
 });
 
 router.get("/comments", (req, res) => {
-  const filteredComments = data.comments.filter((comment) => comment.parent == req.query.parent);
-  res.send(filteredComments);
+  // const filteredComments = data.comments.filter((comment) => comment.parent == req.query.parent);
+  // res.send(filteredComments);
+
+  Comment.find({ parent: req.query.parent }).then((comments) => {
+    res.send(comments);
+  });
 });
 
 router.post("/comments", (req, res) => {
-  const newComment = {
-    _id: data.comments.length,
+  const newComment = new Comment({
+    // _id: data.comments.length,
     creator_id: MY_ID,
     creator_name: MY_NAME,
     parent: req.body.parent,
     content: req.body.content,
-  };
+  });
 
-  data.comments.push(newComment);
-  res.send(newComment);
+  // data.comments.push(newComment);
+  // res.send(newComment);
+
+  newComment.save().then((comment) => res.send(comment));
 });
 
 router.get("/stories", (req, res) => {
-  const stories = data.stories;
-  res.send(stories);
+  // const stories = data.stories;
+  // res.send(stories);
+
+  Story.find({}).then((stories) => res.send(stories));
 });
 
 // anything else falls to this "not found" case

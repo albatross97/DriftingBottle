@@ -25,20 +25,10 @@
 
 .NavBar-link,
 .NavBar-link:visited {
-  color: var(--black);
-  opacity: 1;
   text-decoration: none;
-  margin: 10px;
+  color: var(--black);
   text-align: center;
-}
-
-.NavBar-link:hover {
-  opacity: 0.4;
-  cursor: pointer;
-}
-
-.font {
-  font-size: var(--l);
+  margin: 10px;
 }
 
 #icon {

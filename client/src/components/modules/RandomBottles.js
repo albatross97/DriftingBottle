@@ -44,7 +44,7 @@ const RandomBottles = (props) => {
     let winHeight = window.innerHeight;
     let margin = 100;
     let randomTop = getRandomNumber(winHeight / 2, winHeight - margin);
-    let randomLeft = getRandomNumber(margin, winWidth - margin - 60);
+    let randomLeft = getRandomNumber(margin, winWidth - margin);
 
     const objStyle = {
       position: "absolute",
@@ -83,7 +83,7 @@ const RandomBottles = (props) => {
   return (
     <>
       <div className="randomList">{randomList}</div>
-      <FontAwesomeIcon icon={faRandom} className="font" onClick={shuffle} />
+      <FontAwesomeIcon icon={faRandom} className="u-icon" onClick={shuffle} />
     </>
   );
 };

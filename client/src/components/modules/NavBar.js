@@ -19,13 +19,13 @@ const NavBar = (props) => {
         </div>
         <div className="NavBar-linkContainer u-flexColumn">
           <Link to="/" className="NavBar-link">
-            <FontAwesomeIcon icon={faRegistered} className="font" />
+            <FontAwesomeIcon icon={faRegistered} className="u-icon" />
           </Link>
           <Link to="/profile/" className="NavBar-link">
-            <FontAwesomeIcon icon={faUser} className="font" />
+            <FontAwesomeIcon icon={faUser} className="u-icon" />
           </Link>
           <Link to="/home/" className="NavBar-link">
-            <FontAwesomeIcon icon={faHome} className="font" />
+            <FontAwesomeIcon icon={faHome} className="u-icon" />
           </Link>
         </div>
       </nav>

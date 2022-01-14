@@ -99,3 +99,14 @@ form {
 .u-name {
   color: var(--primary);
 }
+
+.u-icon {
+  font-size: var(--l);
+  color: var(--black);
+  text-align: center;
+}
+
+.u-icon:hover {
+  opacity: 0.4;
+  cursor: pointer;
+}

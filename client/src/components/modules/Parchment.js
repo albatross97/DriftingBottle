@@ -28,7 +28,7 @@ const NewParchment = (props) => {
           </div>
         </div>
       )}
-      <FontAwesomeIcon icon={faPlusCircle} className="font" onClick={togglePop} />
+      <FontAwesomeIcon icon={faPlusCircle} className="u-icon" onClick={togglePop} />
     </>
   );
 };

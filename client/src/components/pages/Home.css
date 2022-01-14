@@ -8,8 +8,7 @@
   position: absolute;
   left: var(--l);
   bottom: var(--l);
-  cursor: pointer;
 }
-.Home-btns .font {
+.Home-btns > * {
   margin-right: 10px;
 }

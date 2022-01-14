@@ -25,9 +25,8 @@ const HomeBottle = (props) => {
       }}
       className="u-flexColumn u-flex-alignCenter bottle"
     >
-      {/*  */}
-      {!seen && <img src={randombt} className="Home-bottle-icon" onClick={togglePop} />}
       {!seen && <div className="Bottle-tag">{props.tag}</div>}
+      {!seen && <img src={randombt} className="Home-bottle-icon" onClick={togglePop} />}
       {seen && (
         <ViewParchment
           handleClose={togglePop}

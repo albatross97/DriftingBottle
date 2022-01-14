@@ -11,6 +11,8 @@ const Profile = () => {
   //filtered stories that the user made comments
   const [pickups, setPickups] = useState([]);
 
+  const [user, setUser] = useState("Rui Wang");
+
   useEffect(() => {
     document.title = "Profile Page";
     get("/api/drops").then((dropObjs) => {
@@ -21,7 +23,7 @@ const Profile = () => {
       let reversedPickupObjs = pickupObjs.reverse();
       setPickups(reversedPickupObjs);
     });
-    get(`/api/user`, { userid: props.userId }).then((userObj) => setUser(userObj));
+    // get(`/api/user`, { userid: props.userId }).then((userObj) => setUser(userObj));
   }, []);
 
   let dropList = null;

@@ -109,7 +109,7 @@ router.get("/drops", (req, res) => {
   // const filteredStories = data.stories.filter((story) => story.creator_id == MY_ID);
   // res.send(filteredStories);
 
-  Story.find({ creator_id: req.user._id }).then((stories) => {
+  Story.find({ creator_id: MY_ID }).then((stories) => {
     res.send(stories);
   });
 });
@@ -128,8 +128,8 @@ router.get("/pickups", (req, res) => {
 router.post("/story", (req, res) => {
   const newStory = new Story({
     // _id: data.stories.length,
-    creator_id: req.user._id,
-    creator_name: req.user.name,
+    creator_id: MY_ID,
+    creator_name: MY_NAME,
     tag: req.body.tag,
     title: req.body.title,
     content: req.body.content,

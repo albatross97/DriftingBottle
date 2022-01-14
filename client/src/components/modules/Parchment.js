@@ -5,17 +5,31 @@ import { NewComment } from "./NewComment.js";
 import { NewStory } from "./NewStory.js";
 import { get } from "../../utilities";
 
-// NavBar drop new bottles
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlusCircle, faRandom } from "@fortawesome/free-solid-svg-icons";
+
+// Home add new bottle btn
+// Click btn then pop new parchment
 const NewParchment = (props) => {
+  const [seen, setSeen] = useState(false);
+
+  const togglePop = () => {
+    setSeen(!seen);
+  };
   return (
-    <div className="popup-box">
-      <div className="box">
-        <span className="close-icon" onClick={props.handleClose}>
-          x
-        </span>
-        <NewStory handleClose={props.handleClose} />
-      </div>
-    </div>
+    <>
+      {seen && (
+        <div className="popup-box">
+          <div className="box">
+            <span className="close-icon" onClick={togglePop}>
+              x
+            </span>
+            <NewStory handleClose={togglePop} />
+          </div>
+        </div>
+      )}
+      <FontAwesomeIcon icon={faPlusCircle} className="font" onClick={togglePop} />
+    </>
   );
 };
 

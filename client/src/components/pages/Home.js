@@ -7,13 +7,8 @@ import { NewParchment } from "../modules/Parchment.js";
 import RandomBottles from "../modules/RandomBottles.js";
 
 const Home = () => {
-  const [seen, setSeen] = useState(false);
   const [size, setSize] = useState(3);
   const [flag, setFlag] = useState(false);
-
-  const togglePop = () => {
-    setSeen(!seen);
-  };
 
   const getRandomNumber = (min, max) => {
     min = Math.ceil(min);
@@ -28,11 +23,10 @@ const Home = () => {
 
   return (
     <div className="Home-container">
-      {seen && <NewParchment handleClose={togglePop} />}
       <RandomBottles size={size} rerender={flag} />
       <div className="Home-btns">
-        <FontAwesomeIcon icon={faPlusCircle} className="font" onClick={togglePop} />
         <FontAwesomeIcon icon={faRandom} className="font" onClick={shuffle} />
+        <NewParchment />
       </div>
     </div>
   );

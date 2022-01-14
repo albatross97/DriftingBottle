@@ -109,7 +109,7 @@ router.get("/drops", (req, res) => {
   // const filteredStories = data.stories.filter((story) => story.creator_id == MY_ID);
   // res.send(filteredStories);
 
-  Story.find({ creator_name: MY_NAME }).then((stories) => {
+  Story.find({ creator_id: req.user._id }).then((stories) => {
     res.send(stories);
   });
 });
@@ -128,8 +128,8 @@ router.get("/pickups", (req, res) => {
 router.post("/story", (req, res) => {
   const newStory = new Story({
     // _id: data.stories.length,
-    creator_id: MY_ID,
-    creator_name: MY_NAME,
+    creator_id: req.user._id,
+    creator_name: req.user.name,
     tag: req.body.tag,
     title: req.body.title,
     content: req.body.content,
@@ -153,8 +153,8 @@ router.get("/comments", (req, res) => {
 router.post("/comments", (req, res) => {
   const newComment = new Comment({
     // _id: data.comments.length,
-    creator_id: MY_ID,
-    creator_name: MY_NAME,
+    creator_id: req.user._id,
+    creator_name: req.user.name,
     parent: req.body.parent,
     content: req.body.content,
   });
@@ -172,6 +172,11 @@ router.get("/stories", (req, res) => {
   Story.find({}).then((stories) => res.send(stories));
 });
 
+router.get("/user", (req, res) => {
+  User.findById(req.query.userid).then((user) => {
+    res.send(user);
+  });
+});
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {
   console.log(`API route not found: ${req.method} ${req.url}`);

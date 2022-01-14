@@ -21,6 +21,7 @@ const Profile = () => {
       let reversedPickupObjs = pickupObjs.reverse();
       setPickups(reversedPickupObjs);
     });
+    get(`/api/user`, { userid: props.userId }).then((userObj) => setUser(userObj));
   }, []);
 
   let dropList = null;
@@ -60,12 +61,15 @@ const Profile = () => {
     pickupList = <div>No bottles!</div>;
   }
 
+  if (!user) {
+    return <div> Loading! </div>;
+  }
   return (
     <section className="Profile-container ">
       <div className="Profile-avatarContainer ">
         <div className="Profile-avatar " />
       </div>
-      <div className="Profile-name u-textCenter">Ruiiiii Wang</div>
+      <div className="Profile-name u-textCenter">{user.name}</div>
       <div className="Profile-info u-textCenter">
         <span>Drop {drops.length} bottle</span>
         <span> | </span>

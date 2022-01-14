@@ -32,7 +32,7 @@ const App = () => {
     const userToken = res.tokenObj.id_token;
     post("/api/login", { token: userToken }).then((user) => {
       setUserId(user._id);
-      post("/api/initsocket", { socketid: socket.id });
+      // post("/api/initsocket", { socketid: socket.id });
     });
   };
 
@@ -44,11 +44,11 @@ const App = () => {
   return (
     <>
       {/* {userId ? <NavBar /> : <></>} */}
-      <NavBar />
+      <NavBar handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
       <Router>
         <Skeleton path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
-        <Profile path="/profile/" />
-        <Home path="/home" />
+        <Profile path="/profile/:userId" />
+        <Home path="/home" userId={userId} />
         <NotFound default />
       </Router>
     </>

@@ -44,7 +44,7 @@ const RandomBottles = (props) => {
     let winHeight = window.innerHeight;
     let margin = 100;
     let randomTop = getRandomNumber(winHeight / 2, winHeight - margin);
-    let randomLeft = getRandomNumber(margin, winWidth - margin);
+    let randomLeft = getRandomNumber(margin, winWidth - margin - 100);
 
     const objStyle = {
       position: "absolute",

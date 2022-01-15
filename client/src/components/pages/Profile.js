@@ -5,25 +5,25 @@ import { get } from "../../utilities";
 
 import React, { useState, useEffect } from "react";
 
-const Profile = () => {
+const Profile = (props) => {
   //filtered stories that the user created
   const [drops, setDrops] = useState([]);
   //filtered stories that the user made comments
   const [pickups, setPickups] = useState([]);
 
-  const [user, setUser] = useState("Rui Wang");
+  const [user, setUser] = useState("Anonymous");
 
   useEffect(() => {
     document.title = "Profile Page";
-    get("/api/drops").then((dropObjs) => {
+    get("/api/drops", { userid: props.userId }).then((dropObjs) => {
       let reversedDropObjs = dropObjs.reverse();
       setDrops(reversedDropObjs);
     });
-    get("/api/pickups").then((pickupObjs) => {
+    get("/api/pickups", { userid: props.userId }).then((pickupObjs) => {
       let reversedPickupObjs = pickupObjs.reverse();
       setPickups(reversedPickupObjs);
     });
-    // get(`/api/user`, { userid: props.userId }).then((userObj) => setUser(userObj));
+    get(`/api/user`, { userid: props.userId }).then((userObj) => setUser(userObj));
   }, []);
 
   let dropList = null;

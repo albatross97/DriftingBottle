@@ -106,20 +106,19 @@ router.post("/initsocket", (req, res) => {
 // | write your API methods below!|
 // |------------------------------|
 router.get("/drops", (req, res) => {
-  // const filteredStories = data.stories.filter((story) => story.creator_id == MY_ID);
-  // res.send(filteredStories);
-
-  Story.find({ creator_id: MY_ID }).then((stories) => {
+  Story.find({ creator_id: req.query.userid }).then((stories) => {
     res.send(stories);
   });
 });
 
 router.get("/pickups", (req, res) => {
-  const filteredComments = data.comments.filter((comment) => comment.creator_id == MY_ID);
+  const filteredComments = data.comments.filter(
+    (comment) => comment.creator_id == req.query.userid
+  );
   const filteredParents = filteredComments.map((comment) => comment.parent);
   const uniqueParents = filteredParents.filter((p, index) => filteredParents.indexOf(p) == index);
   const filteredStories = data.stories.filter(
-    (story) => uniqueParents.includes(story._id) && story.creator_id != MY_ID
+    (story) => uniqueParents.includes(story._id) && story.creator_id != req.query.userid
   );
 
   res.send(filteredStories);
@@ -128,23 +127,17 @@ router.get("/pickups", (req, res) => {
 router.post("/story", (req, res) => {
   const newStory = new Story({
     // _id: data.stories.length,
-    creator_id: MY_ID,
-    creator_name: MY_NAME,
+    creator_id: req.user._id,
+    creator_name: req.user.name,
     tag: req.body.tag,
     title: req.body.title,
     content: req.body.content,
   });
 
-  // data.stories.push(newStory);
-  // res.send(newStory);
-
   newStory.save().then((story) => res.send(story));
 });
 
 router.get("/comments", (req, res) => {
-  // const filteredComments = data.comments.filter((comment) => comment.parent == req.query.parent);
-  // res.send(filteredComments);
-
   Comment.find({ parent: req.query.parent }).then((comments) => {
     res.send(comments);
   });
@@ -153,22 +146,15 @@ router.get("/comments", (req, res) => {
 router.post("/comments", (req, res) => {
   const newComment = new Comment({
     // _id: data.comments.length,
-    creator_id: MY_ID,
-    creator_name: MY_NAME,
+    creator_id: req.user._id,
+    creator_name: req.user.name,
     parent: req.body.parent,
     content: req.body.content,
   });
-
-  // data.comments.push(newComment);
-  // res.send(newComment);
-
   newComment.save().then((comment) => res.send(comment));
 });
 
 router.get("/stories", (req, res) => {
-  // const stories = data.stories;
-  // res.send(stories);
-
   Story.find({}).then((stories) => res.send(stories));
 });
 

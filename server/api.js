@@ -6,67 +6,6 @@
 | This file defines the routes for your server.
 |
 */
-const MY_NAME = "Rui Wang";
-const MY_ID = "7";
-
-const data = {
-  stories: [
-    {
-      _id: 0,
-      creator_id: 7,
-      creator_name: "Rui Wang",
-      content: "I love corgis!",
-      tag: "1900s",
-      title: "corgis",
-    },
-    {
-      _id: 1,
-      creator_id: 7,
-      creator_name: "Rui Wang",
-      content: "noooo! I forget my pasword",
-      tag: "1800s",
-      title: "no",
-    },
-    {
-      _id: 2,
-      creator_id: 0,
-      creator_name: "Joes White",
-      content: "cats! I prefer cats than dogs!",
-      tag: "1600s",
-      title: "cat",
-    },
-  ],
-  comments: [
-    {
-      _id: 0,
-      creator_id: 0,
-      creator_name: "Jessica Tang",
-      parent: 0,
-      content: "comment1",
-    },
-    {
-      _id: 1,
-      creator_id: 7,
-      creator_name: "Rui Wang",
-      parent: 1,
-      content: "comment2",
-    },
-    {
-      _id: 2,
-      creator_id: 7,
-      creator_name: "Rui Wang",
-      parent: 2,
-      content: "comment3",
-    },
-    {
-      _id: 3,
-      creator_id: 7,
-      creator_name: "Rui Wang",
-      parent: 2,
-      content: "comment4",
-    },
-  ],
-};
 
 const express = require("express");
 
@@ -112,21 +51,40 @@ router.get("/drops", (req, res) => {
 });
 
 router.get("/pickups", (req, res) => {
-  const filteredComments = data.comments.filter(
-    (comment) => comment.creator_id == req.query.userid
-  );
-  const filteredParents = filteredComments.map((comment) => comment.parent);
-  const uniqueParents = filteredParents.filter((p, index) => filteredParents.indexOf(p) == index);
-  const filteredStories = data.stories.filter(
-    (story) => uniqueParents.includes(story._id) && story.creator_id != req.query.userid
-  );
+  // find comments whose creator_id == req.query.userid
+  // use map to get their parent (storyID)
+  // remove duplicates (one story may contain several comments you post)
+  // find stories whose IDs are in storyID list we get from above
+  // remove stories whose creator_id == req.query.userid
 
-  res.send(filteredStories);
+  Comment.find({ creator_id: req.query.userid }).then((comments) => {
+    const parents = comments.map((comment) => comment.parent);
+    const stories = [...new Set(parents)];
+    console.log(parents);
+    console.log(stories);
+
+    const getData = async() =>{
+      return Promise.all(stories.map((story) => {return Story.find({_id:story,creator_id: { $ne: req.query.userid }})}))
+    }
+
+
+    
+    getData().then((data) => {
+      console.log(data.flat())
+      res.send(data.flat());
+    })
+
+    
+  });
+
+  // Story.find({
+
+  //   creator_id: { $ne: req.query.userid },
+  // }).then((stories) => res.send(stories));
 });
 
 router.post("/story", (req, res) => {
   const newStory = new Story({
-    // _id: data.stories.length,
     creator_id: req.user._id,
     creator_name: req.user.name,
     tag: req.body.tag,
@@ -145,7 +103,6 @@ router.get("/comments", (req, res) => {
 
 router.post("/comments", (req, res) => {
   const newComment = new Comment({
-    // _id: data.comments.length,
     creator_id: req.user._id,
     creator_name: req.user.name,
     parent: req.body.parent,

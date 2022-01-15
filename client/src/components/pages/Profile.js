@@ -14,7 +14,7 @@ const Profile = (props) => {
   const [user, setUser] = useState("Anonymous");
 
   useEffect(() => {
-    document.title = "Profile Page";
+    // document.title = "Profile Page";
     get("/api/drops", { userid: props.userId }).then((dropObjs) => {
       let reversedDropObjs = dropObjs.reverse();
       setDrops(reversedDropObjs);

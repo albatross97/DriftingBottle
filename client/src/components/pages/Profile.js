@@ -12,15 +12,11 @@ const Profile = (props) => {
   const [pickups, setPickups] = useState([]);
 
   const [user, setUser] = useState(null);
-  if (!user) {
-    return (
-      <div className="Profile-loading">
-        <span>Loading... </span>
-      </div>
-    );
-  }
+
   useEffect(() => {
     // document.title = "Profile Page";
+    get(`/api/user`, { userid: props.userId }).then((userObj) => setUser(userObj));
+
     get("/api/drops", { userid: props.userId }).then((dropObjs) => {
       let reversedDropObjs = dropObjs.reverse();
       setDrops(reversedDropObjs);
@@ -29,7 +25,6 @@ const Profile = (props) => {
       let reversedPickupObjs = pickupObjs.reverse();
       setPickups(reversedPickupObjs);
     });
-    get(`/api/user`, { userid: props.userId }).then((userObj) => setUser(userObj));
   }, []);
 
   let dropList = null;
@@ -67,6 +62,14 @@ const Profile = (props) => {
     ));
   } else {
     pickupList = <div>No bottles!</div>;
+  }
+
+  if (!user) {
+    return (
+      <div className="Profile-loading">
+        <span>Loading... </span>
+      </div>
+    );
   }
 
   return (

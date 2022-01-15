@@ -11,9 +11,13 @@ const Profile = (props) => {
   //filtered stories that the user made comments
   const [pickups, setPickups] = useState([]);
 
-  const [user, setUser] = useState("Anonymous");
+  const [user, setUser] = useState(null);
   if (!user) {
-    return <div> Loading! </div>;
+    return (
+      <div className="Profile-loading">
+        <span>Loading... </span>
+      </div>
+    );
   }
   useEffect(() => {
     // document.title = "Profile Page";

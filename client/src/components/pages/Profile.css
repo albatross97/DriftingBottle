@@ -14,7 +14,6 @@
   background-color: var(--darkgrey);
 }
 
-
 .Profile-name {
   padding: 2rem 0 0.3rem;
   font-size: 24px;
@@ -49,4 +48,12 @@
   justify-content: flex-end;
   border-right: 2px solid var(--light-blue);
   height: 100%;
+}
+
+.Profile-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: var(--l);
 }

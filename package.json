@@ -16,7 +16,7 @@
   "license": "ISC",
   "homepage": "",
   "engines": {
-    "node": ">=12.0.0"
+    "node": "16.x"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",

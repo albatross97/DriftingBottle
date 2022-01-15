@@ -155,7 +155,7 @@ const BukabukaIcon = (props) => (
 
 const Bukabuka = () => {
   const helper = [
-    "Hi, I am Bukabuka",
+    "Hi, I am Bukabuka! Click me for more info",
     "Drop a new bottle by clicking the button on the lower left corner",
     "You can shuffle bottles as well",
     "Go to profile page to view bottles you dropped or picked up",

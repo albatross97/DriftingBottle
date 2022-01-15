@@ -12,7 +12,9 @@ const Profile = (props) => {
   const [pickups, setPickups] = useState([]);
 
   const [user, setUser] = useState("Anonymous");
-
+  if (!user) {
+    return <div> Loading! </div>;
+  }
   useEffect(() => {
     // document.title = "Profile Page";
     get("/api/drops", { userid: props.userId }).then((dropObjs) => {
@@ -63,9 +65,6 @@ const Profile = (props) => {
     pickupList = <div>No bottles!</div>;
   }
 
-  if (!user) {
-    return <div> Loading! </div>;
-  }
   return (
     <section className="Profile-container ">
       <div className="Profile-avatarContainer ">

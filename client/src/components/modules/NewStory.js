@@ -29,6 +29,7 @@ const NewPostInput = (props) => {
     setContent("");
     setTag("");
   };
+  console.log(tag);
 
   return (
     <form className="u-flexColumn">
@@ -54,22 +55,23 @@ const NewPostInput = (props) => {
           required
         />
       </div>
-      <div className="NewStory-container" onChange={handleTagChange}>
+      <div className="NewStory-container NewStory-tagbar" onChange={handleTagChange}>
+        <label> Tag</label>
         <label>
           <input type="radio" value="general" name="tag" required />
-          general
+          <span className="general">general</span>
         </label>
         <label>
           <input type="radio" value="question" name="tag" />
-          question
+          <span className="question">question</span>
         </label>
         <label>
           <input type="radio" value="wishing" name="tag" />
-          wishing
+          <span className="wishing">wishing</span>
         </label>
         <label>
           <input type="radio" value="venting" name="tag" />
-          venting
+          <span className="venting">venting</span>
         </label>
       </div>
       <div className="NewStory-container u-textRight">

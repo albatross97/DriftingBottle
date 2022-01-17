@@ -11,7 +11,9 @@
   height: 250px;
   margin: auto;
   border-radius: 50%;
-  background-color: var(--darkgrey);
+  /* background-color: var(--darkgrey); */
+  position: relative;
+  overflow: hidden;
 }
 
 .Profile-name {
@@ -56,4 +58,40 @@
   align-items: center;
   height: 100vh;
   font-size: var(--l);
+}
+
+@keyframes wave {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+@keyframes floating {
+  from {
+    transform: translate(-50%, 10px);
+  }
+  to {
+    transform: translate(-50%, -10px);
+  }
+}
+
+.Profile-bottle {
+  width: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  bottom: 18px;
+  animation: floating 1.75s ease-in-out infinite alternate;
+}
+.Profile-wave {
+  animation: wave 3s linear infinite;
+  animation-delay: -0.2s;
+  position: absolute;
+  bottom: 0;
+  width: 200%;
+}
+.Profile-wave.delay {
+  animation-duration: 5s;
 }

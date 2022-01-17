@@ -4,6 +4,7 @@ import Bottle from "../modules/Bottle.js";
 import { get } from "../../utilities";
 
 import React, { useState, useEffect } from "react";
+import wave from "../images/wave.png";
 
 const Profile = (props) => {
   //filtered stories that the user created
@@ -80,7 +81,12 @@ const Profile = (props) => {
   return (
     <section className="Profile-container ">
       <div className="Profile-avatarContainer ">
-        <div className="Profile-avatar " />
+        {/* <img
+          className="Profile-bottle"
+          src="https://i.pinimg.com/originals/67/19/71/6719713708a3a22081b18e9a520c85e8.png"
+        /> */}
+        <img className="Profile-wave" src={wave} />
+        <img className="Profile-wave delay" src={wave} />
       </div>
       <div className="Profile-name u-textCenter">{user.name}</div>
       <div className="Profile-info u-textCenter">

@@ -42,3 +42,69 @@
 .NewStory-content::placeholder {
   font-style: italic;
 }
+
+/* tags in parchment */
+.NewStory-tagbar label {
+  display: inline-block;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.NewStory-tagbar label span {
+  display: block;
+  font-style: italic;
+  font-size: 12px;
+  border-radius: 4px;
+  padding: 5px 10px;
+  width: fit-content;
+  border: 1px solid;
+}
+
+.NewStory-tagbar label input {
+  position: absolute;
+  opacity: 0;
+}
+
+.NewStory-tagbar input:checked + span {
+  color: var(--white);
+}
+
+.NewStory-tagbar input:hover + span {
+  transform: scale(1.03);
+}
+
+.question {
+  color: var(--brown);
+  border-color: var(--brown);
+}
+
+.wishing {
+  color: var(--yellow);
+  border-color: var(--yellow);
+}
+
+.venting {
+  color: var(--dark-blue);
+  border-color: var(--dark-blue);
+}
+
+.general {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.NewStory-tagbar input:checked + .question {
+  background-color: var(--brown);
+}
+
+.NewStory-tagbar input:checked + .wishing {
+  background-color: var(--yellow);
+}
+
+.NewStory-tagbar input:checked + .venting {
+  background-color: var(--dark-blue);
+}
+
+.NewStory-tagbar input:checked + .general {
+  background-color: var(--primary);
+}

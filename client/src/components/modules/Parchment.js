@@ -47,6 +47,15 @@ const ViewParchment = (props) => {
     setComments(comments.concat([commentObj]));
   };
 
+  const tagColor =
+    props.tag == "venting"
+      ? "#316778"
+      : props.tag == "question"
+      ? "#BF8A6A"
+      : props.tag == "wishing"
+      ? "#EFCD9E"
+      : "";
+
   return (
     <div className="popup-box">
       <div className="box">
@@ -55,7 +64,9 @@ const ViewParchment = (props) => {
         </span>
         <div className="story-top">
           <div className="story-title">{props.title}</div>
-          <div className="Bottle-tag">{props.tag}</div>
+          <div className="Bottle-tag" style={{ backgroundColor: tagColor }}>
+            {props.tag}
+          </div>
         </div>
         <SinglePost
           _id={props._id}

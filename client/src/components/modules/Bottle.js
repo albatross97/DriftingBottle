@@ -10,6 +10,15 @@ const Bottle = (props) => {
     setSeen(!seen);
   };
 
+  const tagColor =
+    props.tag == "venting"
+      ? "#316778"
+      : props.tag == "question"
+      ? "#BF8A6A"
+      : props.tag == "wishing"
+      ? "#EFCD9E"
+      : "";
+
   return (
     <div className="u-flexColumn u-flex-alignCenter bottle">
       <svg
@@ -26,7 +35,9 @@ const Bottle = (props) => {
           />
         </g>
       </svg>
-      <div className="Bottle-tag">{props.tag}</div>
+      <div className="Bottle-tag" style={{ backgroundColor: tagColor }}>
+        {props.tag}
+      </div>
       <div>{props.title}</div>
       {seen && (
         <ViewParchment

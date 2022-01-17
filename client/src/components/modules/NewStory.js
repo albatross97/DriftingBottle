@@ -56,20 +56,20 @@ const NewPostInput = (props) => {
       </div>
       <div className="NewStory-container" onChange={handleTagChange}>
         <label>
-          <input type="radio" value="1700s" name="tag" required />
-          1700s
+          <input type="radio" value="general" name="tag" required />
+          general
         </label>
         <label>
-          <input type="radio" value="1800s" name="tag" />
-          1800s
+          <input type="radio" value="question" name="tag" />
+          question
         </label>
         <label>
-          <input type="radio" value="1900s" name="tag" />
-          1900s
+          <input type="radio" value="wishing" name="tag" />
+          wishing
         </label>
         <label>
-          <input type="radio" value="2000s" name="tag" />
-          2000s
+          <input type="radio" value="venting" name="tag" />
+          venting
         </label>
       </div>
       <div className="NewStory-container u-textRight">

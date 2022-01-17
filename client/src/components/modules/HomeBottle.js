@@ -15,6 +15,15 @@ const HomeBottle = (props) => {
   const bts = [bt1, bt2, bt3];
   const randombt = bts[Math.floor(Math.random() * bts.length)];
 
+  const tagColor =
+    props.tag == "venting"
+      ? "#316778"
+      : props.tag == "question"
+      ? "#BF8A6A"
+      : props.tag == "wishing"
+      ? "#EFCD9E"
+      : "";
+
   return (
     <div
       style={{
@@ -25,7 +34,11 @@ const HomeBottle = (props) => {
       }}
       className="u-flexColumn u-flex-alignCenter bottle"
     >
-      {!seen && <div className="Bottle-tag">{props.tag}</div>}
+      {!seen && (
+        <div className="Bottle-tag" style={{ backgroundColor: tagColor }}>
+          {props.tag}
+        </div>
+      )}
       {!seen && <img src={randombt} className="Home-bottle-icon" onClick={togglePop} />}
       {seen && (
         <ViewParchment

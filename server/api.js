@@ -21,7 +21,7 @@ const auth = require("./auth");
 const router = express.Router();
 
 //initialize socket
-const socketManager = require("./server-socket");
+// const socketManager = require("./server-socket");
 
 router.post("/login", auth.login);
 router.post("/logout", auth.logout);
@@ -34,12 +34,12 @@ router.get("/whoami", (req, res) => {
   res.send(req.user);
 });
 
-router.post("/initsocket", (req, res) => {
-  // do nothing if user not logged in
-  if (req.user)
-    socketManager.addUser(req.user, socketManager.getSocketFromSocketID(req.body.socketid));
-  res.send({});
-});
+// router.post("/initsocket", (req, res) => {
+//   // do nothing if user not logged in
+//   if (req.user)
+//     socketManager.addUser(req.user, socketManager.getSocketFromSocketID(req.body.socketid));
+//   res.send({});
+// });
 
 // |------------------------------|
 // | write your API methods below!|
@@ -63,18 +63,18 @@ router.get("/pickups", (req, res) => {
     console.log(parents);
     console.log(stories);
 
-    const getData = async() =>{
-      return Promise.all(stories.map((story) => {return Story.find({_id:story,creator_id: { $ne: req.query.userid }})}))
-    }
+    const getData = async () => {
+      return Promise.all(
+        stories.map((story) => {
+          return Story.find({ _id: story, creator_id: { $ne: req.query.userid } });
+        })
+      );
+    };
 
-
-    
     getData().then((data) => {
-      console.log(data.flat())
+      console.log(data.flat());
       res.send(data.flat());
-    })
-
-    
+    });
   });
 
   // Story.find({

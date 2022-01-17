@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Router } from "@reach/router";
+import { Router, useNavigate } from "@reach/router";
 import NavBar from "./modules/NavBar.js";
 import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
 import Profile from "./pages/Profile.js";
 import Home from "./pages/Home.js";
-
 import "../utilities.css";
 
-import { socket } from "../client-socket.js";
+// import { socket } from "../client-socket.js";
 
 import { get, post } from "../utilities";
 
@@ -17,6 +16,7 @@ import { get, post } from "../utilities";
  */
 const App = () => {
   const [userId, setUserId] = useState(undefined);
+  // let nav = useNavigate();
 
   useEffect(() => {
     get("/api/whoami").then((user) => {
@@ -30,10 +30,12 @@ const App = () => {
   const handleLogin = (res) => {
     console.log(`Logged in as ${res.profileObj.name}`);
     const userToken = res.tokenObj.id_token;
+
     post("/api/login", { token: userToken }).then((user) => {
       setUserId(user._id);
       // post("/api/initsocket", { socketid: socket.id });
     });
+    // nav("/home", { replace: true });
   };
 
   const handleLogout = () => {

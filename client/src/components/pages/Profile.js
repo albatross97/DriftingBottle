@@ -15,7 +15,12 @@ const Profile = (props) => {
 
   useEffect(() => {
     // document.title = "Profile Page";
-    get(`/api/user`, { userid: props.userId }).then((userObj) => setUser(userObj));
+    // get(`/api/user`, { userid: props.userId })
+    //   .then((userObj) => setUser(userObj))
+    //   .catch((error) => console.log("invalid user id"));
+
+    get("/api/user", { userid: props.userId }).then((userObj) => setUser(userObj));
+    // .catch((error) => console.log("invalid user id"));
 
     get("/api/drops", { userid: props.userId }).then((dropObjs) => {
       let reversedDropObjs = dropObjs.reverse();

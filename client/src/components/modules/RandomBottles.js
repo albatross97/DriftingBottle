@@ -45,11 +45,16 @@ const RandomBottles = (props) => {
     let margin = 100;
     let randomTop = getRandomNumber(winHeight / 2, winHeight - margin);
     let randomLeft = getRandomNumber(margin, winWidth - margin - 100);
+    let onBeach =
+      (((-4 / 9) * winHeight) / winWidth) * randomLeft + winHeight > randomTop
+        ? "Home-floating"
+        : "";
 
     const objStyle = {
       position: "absolute",
       top: randomTop + "px",
       left: randomLeft + "px",
+      onBeach: onBeach,
     };
     return objStyle;
   };

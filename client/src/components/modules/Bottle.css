@@ -19,3 +19,16 @@
   width: 100px;
   cursor: pointer;
 }
+
+.Home-floating {
+  animation: floating 1.75s ease-in-out infinite alternate;
+}
+
+@keyframes floating {
+  from {
+    transform: translateY(5px);
+  }
+  to {
+    transform: translateY(-5px);
+  }
+}

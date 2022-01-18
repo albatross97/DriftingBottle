@@ -24,22 +24,28 @@ const HomeBottle = (props) => {
       ? "#EFCD9E"
       : "";
 
+  console.log(props.style.onBeach);
   return (
     <div
       style={{
         position: "absolute",
-
         top: `${props.style.top}`,
         left: `${props.style.left}`,
       }}
       className="u-flexColumn u-flex-alignCenter bottle"
     >
       {!seen && (
-        <div className="Bottle-tag" style={{ backgroundColor: tagColor }}>
+        <div className={`Bottle-tag ${props.style.onBeach}`} style={{ backgroundColor: tagColor }}>
           {props.tag}
         </div>
       )}
-      {!seen && <img src={randombt} className="Home-bottle-icon" onClick={togglePop} />}
+      {!seen && (
+        <img
+          src={randombt}
+          className={`Home-bottle-icon ${props.style.onBeach}`}
+          onClick={togglePop}
+        />
+      )}
       {seen && (
         <ViewParchment
           handleClose={togglePop}

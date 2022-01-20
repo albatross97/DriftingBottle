@@ -25,7 +25,7 @@ const NewParchment = (props) => {
             <span className="close-icon" onClick={togglePop}>
               x
             </span>
-            <NewStory handleClose={togglePop} />
+            <NewStory handleClose={togglePop} addNewBottles={props.addNewBottles} />
           </div>
         </div>
       )}

@@ -29,7 +29,6 @@ const NewPostInput = (props) => {
     setContent("");
     setTag("");
   };
-  console.log(tag);
 
   return (
     <form className="u-flexColumn">
@@ -92,7 +91,7 @@ const NewStory = (props) => {
   const addStory = (title, content, tag) => {
     const body = { content: content, title: title, tag: tag };
     post("/api/story", body).then((story) => {
-      // props.addNewStory(story);
+      props.addNewBottles(story);
       props.handleClose();
     });
   };

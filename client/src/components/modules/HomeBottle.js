@@ -24,7 +24,6 @@ const HomeBottle = (props) => {
       ? "#EFCD9E"
       : "";
 
-  console.log(props.style.onBeach);
   return (
     <div
       style={{

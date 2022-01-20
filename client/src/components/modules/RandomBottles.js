@@ -1,20 +1,66 @@
 import React, { useState, useEffect } from "react";
 import HomeBottle from "./HomeBottle";
 import { get } from "../../utilities";
+
 import "./RandomBottles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRandom } from "@fortawesome/free-solid-svg-icons";
 
-const RandomBottles = (props) => {
-  const [stories, setStories] = useState([]);
-  const [size, setSize] = useState(3);
-  const [render, setRender] = useState(false);
+/**
+ * @param {function (min,max)} getRandomNumber: function that returns a random integer between min an max
+ * @param {function} randomStyle: function that returns a random position of a bottle
+ * @param {function} shuffle: function that resets number of random bottles, and rerender
+ * @param {function (stories, size)} sample: function that samples stories of a given size, return an array called randoms
+ * @param {array} randomList: contain random bottles of a given size
+ **/
 
+const RandomBottles = ({ clearNewBottle, newBottle }) => {
+  const [size, setSize] = useState(3);
+  const [IsShuffle, setIsShuffle] = useState(false);
+  const [randoms, setRandoms] = useState([]);
+  const [stories, setStories] = useState([]);
+
+  // init: assign state stories, assign randoms (samples from stories)
   useEffect(() => {
     get("/api/stories").then((storiesObjs) => {
       setStories(storiesObjs);
+      const sampledStories = sample(storiesObjs, size);
+      sampledStories.forEach((story) => {
+        story.style = randomStyle();
+      });
+      setRandoms(sampledStories);
     });
   }, []);
+
+  // if click shuffle button, reassgin randoms
+  useEffect(() => {
+    let sampledStories = sample(stories, size);
+    sampledStories.forEach((story) => {
+      story.style = randomStyle();
+    });
+    setRandoms(sampledStories);
+  }, [IsShuffle]);
+
+  // If drop a new bottle, concat randoms with newBottle
+  // clearNewBottle: return props
+  useEffect(() => {
+    if (newBottle) {
+      const newBottle_copy = JSON.parse(JSON.stringify(newBottle));
+
+      [newBottle_copy].forEach((story) => {
+        story.style = randomStyle();
+      });
+      let newrandoms = randoms.concat([newBottle_copy]);
+      setRandoms(newrandoms);
+      clearNewBottle();
+    }
+  }, [newBottle]);
+
+  const getRandomNumber = (min, max) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  };
 
   const sample = (srcArr, n) => {
     srcArr = srcArr.slice();
@@ -29,22 +75,6 @@ const RandomBottles = (props) => {
       );
     }
     return resultArr;
-  };
-
-  let randoms = sample(stories, size);
-
-  /**
-   * @param {function (min,max)} getRandomNumber: function that returns a random integer between min an max
-   * @param {function} randomStyle: function that returns a random position of a bottle
-   * @param {function} shuffle: function that resets number of random bottles, and rerender
-   * @param {function (stories, size)} sample: function that samples stories of a given size, return an array called randoms
-   * @param {array} randomList: contain random bottles of a given size
-   **/
-
-  const getRandomNumber = (min, max) => {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min);
   };
 
   const randomStyle = () => {
@@ -70,13 +100,15 @@ const RandomBottles = (props) => {
   const shuffle = () => {
     let size = getRandomNumber(2, 4);
     setSize(size);
-    setRender(!render);
+    setIsShuffle(!IsShuffle);
   };
 
   let randomList = null;
   const hasRandom = randoms.length !== 0;
 
   if (hasRandom) {
+    console.log(randoms);
+
     randomList = randoms.map((randomObj) => (
       <HomeBottle
         key={`Bottle_${randomObj._id}`}
@@ -86,7 +118,7 @@ const RandomBottles = (props) => {
         title={randomObj.title}
         content={randomObj.content}
         tag={randomObj.tag}
-        style={randomStyle()}
+        style={randomObj.style}
       />
     ));
   } else {

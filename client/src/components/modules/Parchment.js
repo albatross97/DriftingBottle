@@ -4,6 +4,7 @@ import SinglePost from "./SinglePost.js";
 import { NewComment } from "./NewComment.js";
 import { NewStory } from "./NewStory.js";
 import { get } from "../../utilities";
+import HomeBottle from "./HomeBottle";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle, faRandom } from "@fortawesome/free-solid-svg-icons";

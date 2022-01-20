@@ -33,6 +33,14 @@ const RandomBottles = (props) => {
 
   let randoms = sample(stories, size);
 
+  /**
+   * @param {function (min,max)} getRandomNumber: function that returns a random integer between min an max
+   * @param {function} randomStyle: function that returns a random position of a bottle
+   * @param {function} shuffle: function that resets number of random bottles, and rerender
+   * @param {function (stories, size)} sample: function that samples stories of a given size, return an array called randoms
+   * @param {array} randomList: contain random bottles of a given size
+   **/
+
   const getRandomNumber = (min, max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -60,7 +68,7 @@ const RandomBottles = (props) => {
   };
 
   const shuffle = () => {
-    let size = getRandomNumber(2, 3);
+    let size = getRandomNumber(2, 4);
     setSize(size);
     setRender(!render);
   };

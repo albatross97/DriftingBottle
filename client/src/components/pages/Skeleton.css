@@ -6,6 +6,37 @@
   height: 100vh;
 }
 
-.Login-google{
-  padding:20px;
+.Login-google {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: 10%;
+}
+
+.Login {
+  outline: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+
+  border-radius: 30px;
+  background-color: var(--dark-blue);
+  font-size: var(--l);
+  padding: 5px 70px;
+  font-family: "Muli", sans-serif;
+
+  /* background: none;
+  font-size: 60px;
+  font-family: "Sacramento", cursive;
+  text-shadow: 2px 2px var(--dark-blue); */
+  animation: floating 1.75s ease-in-out infinite alternate;
+}
+
+@keyframes floating {
+  from {
+    transform: translateY(5px);
+  }
+  to {
+    transform: translateY(-5px);
+  }
 }

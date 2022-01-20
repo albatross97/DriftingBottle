@@ -1,15 +1,15 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faUser, faPlusCircle, faRegistered } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faUser, faWater, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import GoogleLogin, { GoogleLogout } from "react-google-login";
 
 import { Link } from "@reach/router";
 import icon from "./icon.png";
 import "./NavBar.css";
 
-/**
- * The navigation bar at the top of all pages. Takes no props.
- */
-const NavBar = (props) => {
+const GOOGLE_CLIENT_ID = "201438548888-g2rufrqljhpc5mn1sqcv3d3kfrc2ke38.apps.googleusercontent.com";
+
+const NavBar = ({ userId, handleLogin, handleLogout }) => {
   return (
     <>
       <nav className="NavBar-container">
@@ -19,13 +19,28 @@ const NavBar = (props) => {
         </div>
         <div className="NavBar-linkContainer u-flexColumn">
           <Link to="/" className="NavBar-link">
-            <FontAwesomeIcon icon={faRegistered} className="u-icon" />
+            {userId && (
+              <GoogleLogout
+                clientId={GOOGLE_CLIENT_ID}
+                buttonText="Logout"
+                onLogoutSuccess={handleLogout}
+                onFailure={(err) => console.log(err)}
+                render={(renderProps) => (
+                  <FontAwesomeIcon
+                    icon={faSignOutAlt}
+                    className="u-icon"
+                    onClick={renderProps.onClick}
+                  />
+                )}
+              />
+            )}
+            {/* <FontAwesomeIcon icon={faSignOutAlt} className="u-icon" /> */}
           </Link>
-          <Link to={`/profile/${props.userId}`} className="NavBar-link">
+          <Link to={`/profile/${userId}`} className="NavBar-link">
             <FontAwesomeIcon icon={faUser} className="u-icon" />
           </Link>
           <Link to="/home/" className="NavBar-link">
-            <FontAwesomeIcon icon={faHome} className="u-icon" />
+            <FontAwesomeIcon icon={faWater} className="u-icon" />
           </Link>
         </div>
       </nav>

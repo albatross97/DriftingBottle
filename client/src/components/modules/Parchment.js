@@ -63,7 +63,7 @@ const ViewParchment = (props) => {
 
     deletedStory().then((story) => {
       // console.log(story);
-      setIsTrash(!IsTrash); // switch back to trash icon
+      props.deleteOneDrop(props._id);
       props.handleClose(); // close popup
     });
   };

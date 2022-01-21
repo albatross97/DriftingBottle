@@ -15,13 +15,7 @@ const Profile = (props) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // document.title = "Profile Page";
-    // get(`/api/user`, { userid: props.userId })
-    //   .then((userObj) => setUser(userObj))
-    //   .catch((error) => console.log("invalid user id"));
-
     get("/api/user", { userid: props.userId }).then((userObj) => setUser(userObj));
-    // .catch((error) => console.log("invalid user id"));
 
     get("/api/drops", { userid: props.userId }).then((dropObjs) => {
       let reversedDropObjs = dropObjs.reverse();
@@ -32,6 +26,11 @@ const Profile = (props) => {
       setPickups(reversedPickupObjs);
     });
   }, []);
+
+  const deleteOneDrop = (storyid) => {
+    const newdrops = drops.filter((drop) => storyid != drop._id);
+    setDrops(newdrops);
+  };
 
   let dropList = null;
   const hasDrops = drops.length !== 0;
@@ -46,6 +45,7 @@ const Profile = (props) => {
         content={dropObj.content}
         tag={dropObj.tag}
         delete={true}
+        deleteOneDrop={deleteOneDrop}
       />
     ));
   } else {
@@ -66,6 +66,7 @@ const Profile = (props) => {
         tag={pickupObjs.tag}
         content={pickupObjs.content}
         delete={false}
+        deleteOneDrop={deleteOneDrop}
       />
     ));
   } else {

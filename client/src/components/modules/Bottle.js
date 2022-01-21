@@ -51,6 +51,7 @@ const Bottle = (props) => {
           creator_name={props.creator_name}
           creator_id={props.creator_id}
           delete={props.delete}
+          deleteOneDrop={props.deleteOneDrop}
         />
       )}
     </div>

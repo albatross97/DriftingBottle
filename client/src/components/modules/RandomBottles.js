@@ -81,10 +81,18 @@ const RandomBottles = ({ clearNewBottle, newBottle }) => {
     let winWidth = window.innerWidth;
     let winHeight = window.innerHeight;
     let margin = 100;
-    let randomTop = getRandomNumber(winHeight / 2, winHeight - margin);
+
     let randomLeft = getRandomNumber(margin, winWidth - margin - 100);
+    let randomTop = getRandomNumber(
+      winHeight / 2,
+      Math.min(
+        (-winHeight / winWidth) * randomLeft + (4 / 3) * winHeight - margin,
+        winHeight - margin
+      )
+    );
+    //(((-4 / 9) * winHeight) / winWidth) * randomLeft + winHeight
     let onBeach =
-      (((-4 / 9) * winHeight) / winWidth) * randomLeft + winHeight > randomTop
+      (-winHeight / winWidth) * randomLeft + (3 / 2) * winHeight - margin > randomTop
         ? "Home-floating"
         : "";
 
@@ -107,8 +115,6 @@ const RandomBottles = ({ clearNewBottle, newBottle }) => {
   const hasRandom = randoms.length !== 0;
 
   if (hasRandom) {
-    console.log(randoms);
-
     randomList = randoms.map((randomObj) => (
       <HomeBottle
         key={`Bottle_${randomObj._id}`}
@@ -128,7 +134,7 @@ const RandomBottles = ({ clearNewBottle, newBottle }) => {
   return (
     <>
       <div className="randomList">{randomList}</div>
-      <FontAwesomeIcon icon={faRandom} className="u-icon" onClick={shuffle} />
+      <FontAwesomeIcon icon={faRandom} className="u-icon u-corner-icon" onClick={shuffle} />
     </>
   );
 };

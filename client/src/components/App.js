@@ -33,6 +33,7 @@ const App = () => {
 
     post("/api/login", { token: userToken }).then((user) => {
       setUserId(user._id);
+      window.location.href = "/home";
       // post("/api/initsocket", { socketid: socket.id });
     });
     // nav("/home", { replace: true });

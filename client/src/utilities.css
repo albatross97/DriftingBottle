@@ -113,3 +113,13 @@ form {
   opacity: 0.4;
   cursor: pointer;
 }
+
+.u-corner-icon {
+  position: absolute;
+  bottom: var(--l);
+  left: var(--l);
+}
+
+.u-add {
+  left: calc(var(--l) * 2 + var(--s));
+}

@@ -4,11 +4,11 @@
   width: 100vw;
   height: 100vh;
 }
-.Home-btns {
+/* .Home-btns {
   position: absolute;
   left: var(--l);
   bottom: var(--l);
-}
+} */
 .Home-btns > * {
   margin-right: 10px;
 }

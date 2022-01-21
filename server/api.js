@@ -7,6 +7,7 @@
 |
 */
 
+const mongoose = require("mongoose");
 const express = require("express");
 
 // import models so we can interact with the database
@@ -60,8 +61,8 @@ router.get("/pickups", (req, res) => {
   Comment.find({ creator_id: req.query.userid }).then((comments) => {
     const parents = comments.map((comment) => comment.parent);
     const stories = [...new Set(parents)];
-    console.log(parents);
-    console.log(stories);
+    // console.log(parents);
+    // console.log(stories);
 
     const getData = async () => {
       return Promise.all(
@@ -72,7 +73,7 @@ router.get("/pickups", (req, res) => {
     };
 
     getData().then((data) => {
-      console.log(data.flat());
+      // console.log(data.flat());
       res.send(data.flat());
     });
   });
@@ -116,7 +117,16 @@ router.get("/stories", (req, res) => {
 });
 
 router.get("/user", (req, res) => {
-  User.findById(req.query.userid).then((user) => {
+  let userId = undefined;
+  try {
+    userId = mongoose.Types.ObjectId(req.query.userid);
+  } catch {
+    console.log("Casting failed! Your userId is bad");
+  }
+  User.findById(userId).then((user) => {
+    if (!user) {
+      console.log("User is undefined!");
+    }
     res.send(user);
   });
 });

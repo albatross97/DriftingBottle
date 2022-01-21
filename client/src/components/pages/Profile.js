@@ -92,10 +92,12 @@ const Profile = (props) => {
         <span className="middle">Drop {drops.length} bottle</span>
         <span>Pick up {pickups.length} bottles</span>
       </div>
-      <div className="u-flex">
-        <div className="Profile-subContainer middle">{dropList}</div>
-        <div className="Profile-subContainer">{pickupList}</div>
-      </div>
+      {props.myId && (
+        <div className="u-flex">
+          <div className="Profile-subContainer middle">{dropList}</div>
+          <div className="Profile-subContainer">{pickupList}</div>
+        </div>
+      )}
     </section>
   );
 };

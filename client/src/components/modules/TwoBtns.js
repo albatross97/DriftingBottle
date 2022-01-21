@@ -17,7 +17,7 @@ const TwoBtns = (props) => {
   return (
     <div className="Home-btns">
       <RandomBottles userId={props.userId} clearNewBottle={clearNewBottle} newBottle={newBottle} />
-      <NewParchment userId={props.userId} addNewBottles={addNewBottles} />
+      {props.userId && <NewParchment userId={props.userId} addNewBottles={addNewBottles} />}
     </div>
   );
 };

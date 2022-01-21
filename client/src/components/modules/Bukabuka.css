@@ -45,10 +45,12 @@
 .btns-container > * {
   margin: 10px;
   padding-bottom: 1px;
+  visibility: hidden;
 }
 
 .glowing {
   z-index: 100;
   filter: drop-shadow(0 0 4px white);
   pointer-events: none;
+  visibility: visible;
 }

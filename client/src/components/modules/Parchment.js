@@ -124,7 +124,7 @@ const ViewParchment = (props) => {
               />
             ))}
         </div>
-        <NewComment storyId={props._id} addNewComment={addNewComment} />
+        {props.userId && <NewComment storyId={props._id} addNewComment={addNewComment} />}
       </div>
     </div>
   );

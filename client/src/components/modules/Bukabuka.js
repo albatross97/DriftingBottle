@@ -191,11 +191,11 @@ const Bukabuka = () => {
 
         <FontAwesomeIcon
           icon={faRandom}
-          className={`u-icon u-corner-icon ${index == 2 && "glowing"}`}
+          className={`u-icon u-corner-icon u-hidden ${index == 2 && "glowing"}`}
         />
         <FontAwesomeIcon
           icon={faPlusCircle}
-          className={`u-icon u-corner-icon u-add ${index == 1 && "glowing"}`}
+          className={`u-icon u-corner-icon u-add u-hidden ${index == 1 && "glowing"}`}
         />
       </div>
 

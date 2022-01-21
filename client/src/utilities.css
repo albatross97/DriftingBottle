@@ -124,3 +124,7 @@ form {
 .u-add {
   left: calc(var(--l) * 2 + var(--s));
 }
+
+.u-hidden {
+  visibility: hidden;
+}

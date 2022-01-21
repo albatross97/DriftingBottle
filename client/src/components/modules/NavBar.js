@@ -18,7 +18,7 @@ const NavBar = ({ userId, handleLogin, handleLogout }) => {
           <div>Drifting Bottle</div>
         </div>
         <div className="NavBar-linkContainer u-flexColumn">
-          <Link to="/" className="NavBar-link">
+          <div className="NavBar-link">
             {userId && (
               <GoogleLogout
                 clientId={GOOGLE_CLIENT_ID}
@@ -34,8 +34,7 @@ const NavBar = ({ userId, handleLogin, handleLogout }) => {
                 )}
               />
             )}
-            {/* <FontAwesomeIcon icon={faSignOutAlt} className="u-icon" /> */}
-          </Link>
+          </div>
           <Link to={`/profile/${userId}`} className="NavBar-link">
             <FontAwesomeIcon icon={faUser} className="u-icon" />
           </Link>

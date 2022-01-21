@@ -54,6 +54,7 @@ const HomeBottle = (props) => {
           _id={props._id}
           creator_name={props.creator_name}
           creator_id={props.creator_id}
+          userId={props.userId}
         />
       )}
     </div>

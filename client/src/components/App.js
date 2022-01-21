@@ -16,7 +16,6 @@ import { get, post } from "../utilities";
  */
 const App = () => {
   const [userId, setUserId] = useState(undefined);
-  // let nav = useNavigate();
 
   useEffect(() => {
     get("/api/whoami").then((user) => {
@@ -36,12 +35,12 @@ const App = () => {
       window.location.href = "/home";
       // post("/api/initsocket", { socketid: socket.id });
     });
-    // nav("/home", { replace: true });
   };
 
   const handleLogout = () => {
     setUserId(undefined);
     post("/api/logout");
+    window.location.href = "/";
   };
 
   return (
@@ -49,7 +48,7 @@ const App = () => {
       {userId && <NavBar handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />}
       <Router>
         <Skeleton path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
-        <Profile path="/profile/:userId" />
+        <Profile path="/profile/:userId" myId={userId} />
         <Home path="/home" userId={userId} />
         <NotFound default />
       </Router>

@@ -14,7 +14,7 @@ import { faRandom } from "@fortawesome/free-solid-svg-icons";
  * @param {array} randomList: contain random bottles of a given size
  **/
 
-const RandomBottles = ({ clearNewBottle, newBottle }) => {
+const RandomBottles = ({ clearNewBottle, newBottle, userId }) => {
   const [size, setSize] = useState(3);
   const [IsShuffle, setIsShuffle] = useState(false);
   const [randoms, setRandoms] = useState([]);
@@ -125,6 +125,7 @@ const RandomBottles = ({ clearNewBottle, newBottle }) => {
         content={randomObj.content}
         tag={randomObj.tag}
         style={randomObj.style}
+        userId={userId}
       />
     ));
   } else {

@@ -3,11 +3,10 @@ import "./Parchment.css";
 import SinglePost from "./SinglePost.js";
 import { NewComment } from "./NewComment.js";
 import { NewStory } from "./NewStory.js";
-import { get } from "../../utilities";
-import HomeBottle from "./HomeBottle";
+import { get, post } from "../../utilities";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlusCircle, faRandom } from "@fortawesome/free-solid-svg-icons";
+import { faPlusCircle, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 // Home add new bottle btn
 // Click btn then pop new parchment
@@ -41,6 +40,7 @@ const NewParchment = (props) => {
 // Profile pickup bottles and add new comments
 const ViewParchment = (props) => {
   const [comments, setComments] = useState([]);
+  const [IsTrash, setIsTrash] = useState(true);
 
   useEffect(() => {
     get("/api/comments", { parent: props._id }).then((comments) => {
@@ -50,6 +50,22 @@ const ViewParchment = (props) => {
 
   const addNewComment = (commentObj) => {
     setComments(comments.concat([commentObj]));
+  };
+
+  const toggleIsTrash = () => {
+    setIsTrash(!IsTrash);
+  };
+
+  const deleteStory = () => {
+    const deletedStory = async () => {
+      return await post("/api/deleteStory", { storyid: props._id });
+    };
+
+    deletedStory().then((story) => {
+      // console.log(story);
+      setIsTrash(!IsTrash); // switch back to trash icon
+      props.handleClose(); // close popup
+    });
   };
 
   const tagColor =
@@ -72,6 +88,24 @@ const ViewParchment = (props) => {
           <div className="Bottle-tag" style={{ backgroundColor: tagColor }}>
             {props.tag}
           </div>
+          {props.delete && (
+            <div className="Bottle-delete">
+              {IsTrash && (
+                <FontAwesomeIcon icon={faTrashAlt} onClick={toggleIsTrash} className="u-pointer " />
+              )}
+
+              {!IsTrash && (
+                <>
+                  <button className="parchment-btn  parchment-cancel" onClick={toggleIsTrash}>
+                    Cancel
+                  </button>
+                  <button className="parchment-btn parchment-delete" onClick={deleteStory}>
+                    Delete
+                  </button>
+                </>
+              )}
+            </div>
+          )}
         </div>
         <SinglePost
           _id={props._id}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../../utilities.css";
 import "./Bottle.css";
+
 import { ViewParchment } from "./Parchment.js";
 
 const Bottle = (props) => {
@@ -39,6 +40,7 @@ const Bottle = (props) => {
         {props.tag}
       </div>
       <div>{props.title}</div>
+
       {seen && (
         <ViewParchment
           handleClose={togglePop}
@@ -48,6 +50,7 @@ const Bottle = (props) => {
           tag={props.tag}
           creator_name={props.creator_name}
           creator_id={props.creator_id}
+          delete={props.delete}
         />
       )}
     </div>

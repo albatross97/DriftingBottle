@@ -24,8 +24,13 @@
   font-size: var(--m);
   color: var(--primary);
   margin-bottom: 40px;
-  /* display:flex;
-  justify-content:center */
+}
+
+.Profile-info > * {
+  flex-grow: 1;
+  flex-basis: 0;
+  padding: 0 var(--s);
+  display: flex;
 }
 
 .Profile-line {
@@ -45,6 +50,10 @@
   font-size: 24px;
   margin: var(--m) var(--s);
 }
+
+/* .Profile-subContainer.middle > *:hover {
+  color: aqua;
+} */
 
 .middle {
   justify-content: flex-end;

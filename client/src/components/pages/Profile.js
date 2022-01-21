@@ -45,6 +45,7 @@ const Profile = (props) => {
         title={dropObj.title}
         content={dropObj.content}
         tag={dropObj.tag}
+        delete={true}
       />
     ));
   } else {
@@ -64,6 +65,7 @@ const Profile = (props) => {
         title={pickupObjs.title}
         tag={pickupObjs.tag}
         content={pickupObjs.content}
+        delete={false}
       />
     ));
   } else {
@@ -81,17 +83,12 @@ const Profile = (props) => {
   return (
     <section className="Profile-container ">
       <div className="Profile-avatarContainer ">
-        {/* <img
-          className="Profile-bottle"
-          src="https://i.pinimg.com/originals/67/19/71/6719713708a3a22081b18e9a520c85e8.png"
-        /> */}
         <img className="Profile-wave" src={wave} />
         <img className="Profile-wave delay" src={wave} />
       </div>
       <div className="Profile-name u-textCenter">{user.name}</div>
-      <div className="Profile-info u-textCenter">
-        <span>Drop {drops.length} bottle</span>
-        <span> | </span>
+      <div className="Profile-info u-flex">
+        <span className="middle">Drop {drops.length} bottle</span>
         <span>Pick up {pickups.length} bottles</span>
       </div>
       <div className="u-flex">

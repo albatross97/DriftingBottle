@@ -43,11 +43,42 @@
   font-size: var(--l);
   text-transform: capitalize;
   font-weight: 700;
-  margin-right: 10px;
+  margin-right: var(--s);
 }
 
 .story-top {
   display: flex;
   align-items: center;
   margin-bottom: var(--s);
+}
+
+.Bottle-delete {
+  margin: 0 var(--sm);
+  font-size: var(--m);
+  color: var(--darkgrey);
+}
+
+.parchment-btn {
+  border: 1px solid;
+  font-family: inherit;
+  border-radius: 4px;
+  margin: 3px;
+  background-color: var(--white);
+  cursor: pointer;
+}
+
+.parchment-cancel {
+  color: var(--darkgrey);
+}
+
+.parchment-cancel:hover {
+  background-color: var(--grey);
+}
+
+.parchment-delete {
+  color: var(--light-blue);
+}
+
+.parchment-delete:hover {
+  background-color: var(--hover-blue);
 }

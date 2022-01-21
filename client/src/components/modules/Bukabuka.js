@@ -169,6 +169,7 @@ const Bukabuka = () => {
     "You can shuffle bottles as well",
     "Go to profile page to view bottles you dropped or picked up",
     "In case you want to leave, here is the portal",
+    "Just a reminder that we are now in home page",
     "zzZZZ",
   ];
 
@@ -185,7 +186,7 @@ const Bukabuka = () => {
         <div className="btns-container">
           <FontAwesomeIcon icon={faSignOutAlt} className={`u-icon ${index == 4 && "glowing"}`} />
           <FontAwesomeIcon icon={faUser} className={`u-icon ${index == 3 && "glowing"}`} />
-          <FontAwesomeIcon icon={faWater} className="u-icon" />
+          <FontAwesomeIcon icon={faWater} className={`u-icon ${index == 5 && "glowing"}`} />
         </div>
 
         <FontAwesomeIcon

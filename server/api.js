@@ -61,8 +61,6 @@ router.get("/pickups", (req, res) => {
   Comment.find({ creator_id: req.query.userid }).then((comments) => {
     const parents = comments.map((comment) => comment.parent);
     const stories = [...new Set(parents)];
-    // console.log(parents);
-    // console.log(stories);
 
     const getData = async () => {
       return Promise.all(
@@ -73,15 +71,22 @@ router.get("/pickups", (req, res) => {
     };
 
     getData().then((data) => {
-      // console.log(data.flat());
       res.send(data.flat());
     });
   });
+});
 
-  // Story.find({
-
-  //   creator_id: { $ne: req.query.userid },
-  // }).then((stories) => res.send(stories));
+router.post("/deleteStory", (req, res) => {
+  Story.findOneAndDelete({ _id: req.body.storyid })
+    .then((story) => {
+      console.log("A story is deleted.");
+      res.send(story);
+    })
+    .then(() => {
+      Comment.deleteMany({ parent: req.body.storyid }).then((comments) => {
+        console.log("Its comments are deleted as well.");
+      });
+    });
 });
 
 router.post("/story", (req, res) => {

@@ -6,7 +6,8 @@
   padding: 10px;
   margin-bottom: 10px;
   transition: opacity 2s linear;
-  pointer-events: none;
+  cursor: pointer;
+  /* pointer-events: none; */
 }
 
 .bukabuka-container {
@@ -15,9 +16,39 @@
   position: absolute;
   right: 100px;
   bottom: 60px;
+  z-index: 10;
 }
 
 .bukabuka {
   cursor: pointer;
-  z-index: 10;
+}
+
+.glowing-btns {
+  color: white;
+}
+
+.btns-container {
+  position: absolute;
+  left: auto;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  width: 60px;
+  padding: var(--l) 0 var(--l);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  pointer-events: none;
+}
+
+.btns-container > * {
+  margin: 10px;
+  padding-bottom: 1px;
+}
+
+.glowing {
+  z-index: 100;
+  filter: drop-shadow(0 0 4px white);
+  pointer-events: none;
 }

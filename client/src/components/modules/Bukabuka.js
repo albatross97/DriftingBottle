@@ -1,5 +1,14 @@
-import React, { useState, ReactComponent } from "react";
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faUser,
+  faWater,
+  faSignOutAlt,
+  faRandom,
+  faPlusCircle,
+} from "@fortawesome/free-solid-svg-icons";
 import "./Bukabuka.css";
+import { Link } from "@reach/router";
 
 const BukabukaIcon = (props) => (
   <svg id="buka" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 223.19 184.58" {...props}>
@@ -159,6 +168,7 @@ const Bukabuka = () => {
     "Drop a new bottle by clicking the button on the lower left corner",
     "You can shuffle bottles as well",
     "Go to profile page to view bottles you dropped or picked up",
+    "In case you want to leave, here is the portal",
     "zzZZZ",
   ];
 
@@ -170,10 +180,31 @@ const Bukabuka = () => {
   };
 
   return (
-    <div className="bukabuka-container u-flexColumn">
-      <div className="bukabuka-help ">{helper[index]}</div>
-      <BukabukaIcon className="bukabuka" onClick={shuffleText} />
-    </div>
+    <>
+      <div className="glowing-btns">
+        <div className="btns-container">
+          <FontAwesomeIcon icon={faSignOutAlt} className={`u-icon ${index == 4 && "glowing"}`} />
+          <FontAwesomeIcon icon={faUser} className={`u-icon ${index == 3 && "glowing"}`} />
+          <FontAwesomeIcon icon={faWater} className="u-icon" />
+        </div>
+
+        <FontAwesomeIcon
+          icon={faRandom}
+          className={`u-icon u-corner-icon ${index == 2 && "glowing"}`}
+        />
+        <FontAwesomeIcon
+          icon={faPlusCircle}
+          className={`u-icon u-corner-icon u-add ${index == 1 && "glowing"}`}
+        />
+      </div>
+
+      <div className="bukabuka-container u-flexColumn">
+        <div className="bukabuka-help " onClick={shuffleText}>
+          {helper[index]}
+        </div>
+        <BukabukaIcon className="bukabuka" onClick={shuffleText} />
+      </div>
+    </>
   );
 };
 

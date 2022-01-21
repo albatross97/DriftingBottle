@@ -82,7 +82,7 @@ const RandomBottles = ({ clearNewBottle, newBottle }) => {
     let winHeight = window.innerHeight;
     let margin = 100;
 
-    let randomLeft = getRandomNumber(margin, winWidth - margin - 100);
+    let randomLeft = getRandomNumber(0, winWidth - margin - 100);
     let randomTop = getRandomNumber(
       winHeight / 2,
       Math.min(
@@ -128,7 +128,7 @@ const RandomBottles = ({ clearNewBottle, newBottle }) => {
       />
     ));
   } else {
-    randomList = <div>No bottles!</div>;
+    randomList = <div></div>;
   }
 
   return (

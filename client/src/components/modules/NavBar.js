@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faUser, faWater, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faWater, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import GoogleLogin, { GoogleLogout } from "react-google-login";
 
 import { Link } from "@reach/router";

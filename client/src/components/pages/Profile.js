@@ -37,6 +37,7 @@ const Profile = (props) => {
   if (hasDrops) {
     dropList = drops.map((dropObj) => (
       <Bottle
+        userId={props.userId}
         key={`Bottle_${dropObj._id}`}
         _id={dropObj._id}
         creator_name={dropObj.creator_name}
@@ -58,6 +59,7 @@ const Profile = (props) => {
   if (hasPickups) {
     pickupList = pickups.map((pickupObjs) => (
       <Bottle
+        userId={props.userId}
         key={`Bottle_${pickupObjs._id}`}
         _id={pickupObjs._id}
         creator_name={pickupObjs.creator_name}

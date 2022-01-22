@@ -43,6 +43,7 @@ const Bottle = (props) => {
 
       {seen && (
         <ViewParchment
+          userId={props.userId}
           handleClose={togglePop}
           title={props.title}
           content={props.content}

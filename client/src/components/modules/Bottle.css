@@ -23,7 +23,7 @@
 }
 
 .Home-bottle-icon {
-  width: 100px;
+  width: var(--homebottle);
   cursor: pointer;
 }
 

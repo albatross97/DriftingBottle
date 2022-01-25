@@ -11,7 +11,7 @@
 }
 
 .bukabuka-container {
-  width: 20vw;
+  width: 25vw;
   max-width: 200px;
   position: absolute;
   right: 100px;
@@ -33,7 +33,7 @@
   top: 0px;
   right: 0px;
   bottom: 0px;
-  width: 60px;
+  width: var(--sidebar);
   padding: var(--l) 0 var(--l);
   display: flex;
   flex-direction: column;

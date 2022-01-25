@@ -39,7 +39,7 @@ const Bottle = (props) => {
       <div className="Bottle-tag" style={{ backgroundColor: tagColor }}>
         {props.tag}
       </div>
-      <div>{props.title}</div>
+      <div className="Bottle-title">{props.title}</div>
 
       {seen && (
         <ViewParchment

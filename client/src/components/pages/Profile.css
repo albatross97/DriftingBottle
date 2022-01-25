@@ -1,5 +1,5 @@
 .Profile-container {
-  margin-right: 60px;
+  margin-right: var(--sidebar);
   padding: 5%;
   position: relative;
   height: auto;
@@ -7,18 +7,17 @@
 }
 
 .Profile-avatarContainer {
-  width: 250px;
-  height: 250px;
+  width: var(--avatar);
+  height: var(--avatar);
   margin: auto;
   border-radius: 50%;
-  /* background-color: var(--darkgrey); */
   position: relative;
   overflow: hidden;
 }
 
 .Profile-name {
   padding: 2rem 0 0.3rem;
-  font-size: 24px;
+  font-size: var(--l);
 }
 .Profile-info {
   font-size: var(--m);

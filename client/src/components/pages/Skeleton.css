@@ -1,9 +1,15 @@
 /* Fill me in :) */
 .Login-container {
-  background: url("../modules/login.png") no-repeat center center/cover;
+  background: url("../images/login.png") no-repeat center center/cover;
   position: absolute;
   width: 100vw;
   height: 100vh;
+}
+
+@media screen and (max-width: 480px) {
+  .Login-container {
+    background: url("../images/login_m.png") no-repeat center center/ cover;
+  }
 }
 
 .Login-google {
@@ -25,10 +31,6 @@
   padding: 5px 70px;
   font-family: "Muli", sans-serif;
 
-  /* background: none;
-  font-size: 60px;
-  font-family: "Sacramento", cursive;
-  text-shadow: 2px 2px var(--dark-blue); */
   animation: floating 1.75s ease-in-out infinite alternate;
 }
 

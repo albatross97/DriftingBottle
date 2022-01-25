@@ -5,7 +5,7 @@
   right: 0px;
   bottom: 0px;
   z-index: 100;
-  width: 60px;
+  width: var(--sidebar);
   padding: var(--l) 0 var(--l);
   background-color: var(--primary);
   display: flex;
@@ -20,9 +20,6 @@
   text-align: center;
 }
 
-.NavBar-linkContainer {
-}
-
 .NavBar-link,
 .NavBar-link:visited {
   text-decoration: none;
@@ -32,6 +29,6 @@
 }
 
 #icon {
-  width: 30px;
+  width: var(--icon);
   padding-bottom: 5px;
 }

@@ -1,14 +1,16 @@
 .Home-container {
-  background: url("../modules/home.png") no-repeat center center/cover;
+  background: url("../images/home.png") no-repeat center center/cover;
   position: absolute;
   width: 100vw;
   height: 100vh;
 }
-/* .Home-btns {
-  position: absolute;
-  left: var(--l);
-  bottom: var(--l);
-} */
+
+@media screen and (max-width: 480px) {
+  .Home-container {
+    background: url("../images/home_m.png") no-repeat center center/ cover;
+  }
+}
+
 .Home-btns > * {
   margin-right: 10px;
 }

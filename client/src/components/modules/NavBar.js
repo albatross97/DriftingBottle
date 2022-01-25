@@ -4,7 +4,7 @@ import { faUser, faWater, faSignOutAlt } from "@fortawesome/free-solid-svg-icons
 import GoogleLogin, { GoogleLogout } from "react-google-login";
 
 import { Link } from "@reach/router";
-import icon from "./icon.png";
+import icon from "../images/icon.png";
 import "./NavBar.css";
 
 const GOOGLE_CLIENT_ID = "201438548888-g2rufrqljhpc5mn1sqcv3d3kfrc2ke38.apps.googleusercontent.com";

@@ -92,7 +92,7 @@ const Profile = (props) => {
       <div className="Profile-name u-textCenter">{user.name}</div>
       <div className="Profile-info u-flex">
         <span className="middle">Drop {drops.length} bottle</span>
-        <span>Pick up {pickups.length} bottles</span>
+        <span>Reply {pickups.length} bottles</span>
       </div>
       {props.myId && (
         <div className="u-flex">

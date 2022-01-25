@@ -36,6 +36,22 @@
   --sm: 14px;
   --m: 16px;
   --l: 24px;
+  --sidebar: 60px;
+  --avatar: 250px;
+  --homebottle: 100px;
+  --icon: 30px;
+}
+
+@media screen and (max-width: 480px) {
+  :root {
+    --sm: 12px;
+    --m: 14px;
+    --l: 20px;
+    --sidebar: 50px;
+    --avatar: 210px;
+    --homebottle: 80px;
+    --icon: 25px;
+  }
 }
 
 body {
@@ -43,6 +59,7 @@ body {
   padding: 0;
   font-family: "Muli", sans-serif;
   font-weight: 300;
+  -webkit-tap-highlight-color: transparent;
 }
 
 form {

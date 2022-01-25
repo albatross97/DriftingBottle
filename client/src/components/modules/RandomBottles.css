@@ -1,7 +1,7 @@
 .randomList {
   position: relative;
   /* background: #00000050; */
-  width: calc(100vw - 60px);
+  width: calc(100vw - var(--sidebar));
   height: 100vh;
   top: 0;
   left: 0;

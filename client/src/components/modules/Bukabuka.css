@@ -5,9 +5,15 @@
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
-  transition: opacity 2s linear;
+  transition: all 1.5s;
   cursor: pointer;
-  /* pointer-events: none; */
+}
+.bukabuka-help.hide {
+  opacity: 0;
+}
+
+.visualhide {
+  display: none;
 }
 
 .bukabuka-container {

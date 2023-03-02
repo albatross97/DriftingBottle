@@ -174,11 +174,22 @@ const Bukabuka = () => {
   ];
 
   const [index, setIndex] = useState(0);
+  const [isShown, setIsShown] = useState(true);
 
   const shuffleText = () => {
     let i = index < helper.length - 1 ? (i = index + 1) : 0;
     setIndex(i);
   };
+
+  let hide = isShown ? "" : "hide";
+  let visualhide = "";
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+       setCount('visualhide');
+     }, 1500);
+    return () => clearTimeout(timeout);
+   },[]);
 
   return (
     <>
@@ -200,10 +211,20 @@ const Bukabuka = () => {
       </div>
 
       <div className="bukabuka-container u-flexColumn">
-        <div className="bukabuka-help " onClick={shuffleText}>
+        <div
+          className={`bukabuka-help ${hide} ${visualhide}`}
+          onClick={shuffleText}
+          onMouseEnter={() => setIsShown(true)}
+          onMouseLeave={() => setIsShown(false)}
+        >
           {helper[index]}
         </div>
-        <BukabukaIcon className="bukabuka" onClick={shuffleText} />
+        <BukabukaIcon
+          className="bukabuka"
+          onClick={shuffleText}
+          onMouseEnter={() => setIsShown(true)}
+          onMouseLeave={() => setIsShown(false)}
+        />
       </div>
     </>
   );

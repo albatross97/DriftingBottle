@@ -46,7 +46,6 @@ const NewPostInput = (props) => {
       <div className="NewStory-container u-flexColumn">
         <label> Content</label>
         <textarea
-          type="text"
           placeholder="content"
           value={content}
           onChange={handleContentChange}

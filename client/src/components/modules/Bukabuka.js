@@ -8,7 +8,6 @@ import {
   faPlusCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import "./Bukabuka.css";
-import { Link } from "@reach/router";
 
 const BukabukaIcon = (props) => (
   <svg id="buka" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 223.19 184.58" {...props}>
@@ -177,19 +176,11 @@ const Bukabuka = () => {
   const [isShown, setIsShown] = useState(true);
 
   const shuffleText = () => {
-    let i = index < helper.length - 1 ? (i = index + 1) : 0;
+    let i = index < helper.length - 1 ? index + 1 : 0;
     setIndex(i);
   };
 
   let hide = isShown ? "" : "hide";
-  let visualhide = "";
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-       setCount('visualhide');
-     }, 1500);
-    return () => clearTimeout(timeout);
-   },[]);
 
   return (
     <>
@@ -212,7 +203,7 @@ const Bukabuka = () => {
 
       <div className="bukabuka-container u-flexColumn">
         <div
-          className={`bukabuka-help ${hide} ${visualhide}`}
+          className={`bukabuka-help ${hide}}`}
           onClick={shuffleText}
           onMouseEnter={() => setIsShown(true)}
           onMouseLeave={() => setIsShown(false)}

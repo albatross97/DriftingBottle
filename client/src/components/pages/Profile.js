@@ -1,7 +1,7 @@
 import "./Profile.css";
 import "../../utilities.css";
 import Bottle from "../modules/Bottle.js";
-import { get } from "../../utilities";
+import { get } from "../../utilities.js";
 
 import React, { useState, useEffect } from "react";
 import wave from "../images/wave.png";
@@ -91,8 +91,8 @@ const Profile = (props) => {
       </div>
       <div className="Profile-name u-textCenter">{user.name}</div>
       <div className="Profile-info u-flex">
-        <span className="middle">Drop {drops.length} bottle</span>
-        <span>Reply {pickups.length} bottles</span>
+        <span className="middle">Drop {drops.length} bottle(s)</span>
+        <span>Reply {pickups.length} bottle(s)</span>
       </div>
       {props.myId && (
         <div className="u-flex">
